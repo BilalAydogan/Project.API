@@ -17,6 +17,8 @@ namespace Project.Model
         public string Email { get; set; }   
         public string Password { get; set; }    
         public string? Photo { get; set; }
+        public int RolId { get; set; }
+        public int DepartmentId { get; set; }
         public virtual Rol Rol { get; set; }
         public virtual Department Department { get; set; }
 

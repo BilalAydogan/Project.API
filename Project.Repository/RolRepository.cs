@@ -13,8 +13,9 @@ namespace Project.Repository
         public RolRepository(RepositoryContext context) : base(context)
         {
         }
-        public void RolSil(int rolId)
+        public void DeleteRol(int rolId)
         {
+            RepositoryContext.Users.Where(u => u.Id == rolId).ExecuteDelete();
             RepositoryContext.Roller.Where(r => r.Id == rolId).ExecuteDelete();
         }
     }

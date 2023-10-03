@@ -14,8 +14,8 @@ namespace Project.API.Controllers
         public RolController(RepositoryWrapper repo) : base(repo)
         {
         }
-        [HttpGet("AllRolls")]
-        public dynamic AllRoll()
+        [HttpGet("AllRol")]
+        public dynamic AllRol()
         {
             List<Rol> items = repo.RolRepository.FindAll().ToList<Rol>();
             return new
@@ -65,6 +65,25 @@ namespace Project.API.Controllers
             {
                 success = true
             };
+        }
+        [HttpDelete("Delete")]
+        public dynamic Delete(int id)
+        {
+            if (id <= 0)
+            {
+                return new
+                {
+                    success = false,
+                    message = "Invalid id"
+                };
+            }
+
+            repo.RolRepository.DeleteRol(id);
+            return new
+            {
+                success = true
+            };
+
         }
     }
 }
