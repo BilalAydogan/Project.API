@@ -7,11 +7,14 @@ using System.Threading.Tasks;
 
 namespace Project.Model
 {
-    [Table("tblProductSupply")]
-    public class ProductSupply
+    [Table("tblRequest")]
+    public class Request
     {
         public int Id { get; set; }
-        public virtual Product Product { get; set; }
-        public virtual Supply  Supply { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public int Amount { get; set; }
+        
+        public virtual User User { get; set; }
     }
 }

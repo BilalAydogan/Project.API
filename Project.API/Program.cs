@@ -18,7 +18,7 @@ builder.Services.AddAuthentication(x => {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 }).AddJwtBearer(o => {
-    var Key = Encoding.UTF8.GetBytes("ETicaretKeyVektorelAhlatciGrup229");
+    var Key = Encoding.UTF8.GetBytes("AhlatciBaslangicProjectApplication");
     o.SaveToken = true;
     o.TokenValidationParameters = new TokenValidationParameters
     {
@@ -31,7 +31,6 @@ builder.Services.AddAuthentication(x => {
 });
 builder.Services.AddControllers().AddJsonOptions(opts => opts.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -41,6 +40,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors(options => { options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader(); });
+
 app.UseAuthorization();
 
 app.MapControllers();

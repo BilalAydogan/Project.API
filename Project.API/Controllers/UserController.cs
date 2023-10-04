@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using Project.Model;
+using Project.Model.Views;
 using Project.Repository;
 
 namespace Project.API.Controllers
@@ -37,10 +39,20 @@ namespace Project.API.Controllers
                 };
             }
         }
-        [HttpPost("AllUsers")]
+        [HttpGet("AllUsers")]       
         public dynamic AllUsers()
         {
             List<User> items = repo.UserRepository.FindAll().ToList<User>();
+            return new
+            {
+                success = true,
+                data = items,
+            };
+        }
+        [HttpGet("AllUs")]
+        public dynamic AllUs()
+        {
+            List<V_User> items = repo.UserRepository.UserOzet().ToList<V_User>();
             return new
             {
                 success = true,
@@ -58,7 +70,6 @@ namespace Project.API.Controllers
                 Surname = json.Surname,
                 Email = json.Email,
                 Password = json.Password,
-                Photo = json.Photo,
                 RolId = json.RolId,
                 DepartmentId = json.DepartmentId
             };

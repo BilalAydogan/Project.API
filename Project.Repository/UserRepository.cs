@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Project.Model.Views;
+
 namespace Project.Repository
 {
     public class UserRepository : RepositoryBase<User>
@@ -17,5 +19,6 @@ namespace Project.Repository
         {
             RepositoryContext.Users.Where(u => u.Id == userId).ExecuteDelete();
         }
+        public List<V_User> UserOzet() => RepositoryContext.V_Users.ToList<V_User>();
     }
 }

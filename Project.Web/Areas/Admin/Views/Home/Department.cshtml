@@ -1,0 +1,31 @@
+﻿<h2>Department</h2>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#departmentModal">
+    Add New Department
+</button>
+<div id="divDepartments">
+</div>
+
+<div class="modal fade" id="departmentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Department Details</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <label for="inputDeparmtnetAd" class="form-label">Deparmtnet Name</label>
+                <input type="text" id="inputDepartmentAd" class="form-control">
+
+            </div>
+            <div class="modal-body">
+                <label for="selectCompanyId" class="form-label">Company Name</label>
+                <select id="selectCompanyId"></select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="SaveDepartment()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/admin/department.js" asp-append-version="true"></script>

@@ -13,14 +13,14 @@ namespace Project.Model
         public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-
         public string Email { get; set; }   
-        public string Password { get; set; }    
-        public string? Photo { get; set; }
+        public string Password { get; set; }
         public int RolId { get; set; }
         public int DepartmentId { get; set; }
+        public int CompanyId { get; set; }
         public virtual Rol Rol { get; set; }
         public virtual Department Department { get; set; }
+        public virtual Company Company { get; set; }
 
     }
 }

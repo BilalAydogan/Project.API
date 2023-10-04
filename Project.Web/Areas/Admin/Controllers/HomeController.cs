@@ -13,5 +13,17 @@ namespace Project.Web.Areas.Admin.Controllers
         {
             return View();
         }
+        public IActionResult Department()
+        {
+            return View();
+        }
+        public IActionResult Company()
+        {
+            return View();
+        }
+        public IActionResult User()
+        {
+            return View();
+        }
     }
 }

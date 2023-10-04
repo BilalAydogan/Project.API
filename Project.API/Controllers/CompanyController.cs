@@ -9,9 +9,9 @@ namespace Project.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DeparmentController : BaseController
+    public class CompanyController : BaseController
     {
-        public DeparmentController(RepositoryWrapper repo) : base(repo)
+        public CompanyController(RepositoryWrapper repo) : base(repo)
         {
         }
         [HttpPost("Save")]
@@ -19,7 +19,7 @@ namespace Project.API.Controllers
         public dynamic Save([FromBody] dynamic model)
         {
             dynamic json = JObject.Parse(model.GetRawText());
-            Department item = new Department()
+            Company item = new Company()
             {
                 Id = json.Id,
                 Name = json.Name
@@ -43,11 +43,11 @@ namespace Project.API.Controllers
             }
             if (item.Id > 0)
             {
-                repo.DepartmentRepository.Update(item);
+                repo.CompanyRepository.Update(item);
             }
             else
             {
-                repo.DepartmentRepository.Create(item);
+                repo.CompanyRepository.Create(item);
             }
 
             repo.SaveChanges();
@@ -56,10 +56,10 @@ namespace Project.API.Controllers
                 success = true
             };
         }
-        [HttpGet("AllDepartment")]
-        public dynamic AllDeparment()
+        [HttpGet("AllCompany")]
+        public dynamic AllCompany()
         {
-            List<Department> items = repo.DepartmentRepository.FindAll().ToList<Department>();
+            List<Company> items = repo.CompanyRepository.FindAll().ToList<Company>();
             return new
             {
                 success = true,
@@ -78,7 +78,7 @@ namespace Project.API.Controllers
                 };
             }
 
-            repo.DepartmentRepository.DeleteDepartment(id);
+            repo.CompanyRepository.DeleteCompany(id);
             return new
             {
                 success = true

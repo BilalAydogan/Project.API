@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Project.Repository
 {
-    public class ProductRepository : RepositoryBase<Product>
+    public class RequestSupplyRepository : RepositoryBase<RequestSupply>
     {
-        public ProductRepository(RepositoryContext repositoryContext) : base(repositoryContext)
+        public RequestSupplyRepository(RepositoryContext repositoryContext) : base(repositoryContext)
         {
         }
     }

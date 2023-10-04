@@ -14,10 +14,11 @@ namespace Project.Repository
         private DepartmentRepository departmentRepository;
         private DepoRepository depoRepository;
         private ItemRepository itemRepository;
-        private ProductRepository productRepository;
-        private ProductOnayRepository productOnayRepository;
-        private ProductSupplyRepository productSupplyRepository;
+        private RequestRepository requestRepository;
+        private RequestOnayRepository requestOnayRepository;
+        private RequestSupplyRepository requestSupplyRepository;
         private SupplyRepository supplyRepository;
+        private CompanyRepository companyRepository;
         public RepositoryWrapper(RepositoryContext context)
         {
             this.context = context;
@@ -31,6 +32,16 @@ namespace Project.Repository
                 if (userRepository == null)
                     userRepository = new UserRepository(context);
                 return userRepository;
+
+            }
+        }
+        public CompanyRepository CompanyRepository
+        {
+            get
+            {
+                if (companyRepository == null)
+                    companyRepository = new CompanyRepository(context);
+                return companyRepository;
 
             }
         }
@@ -74,33 +85,33 @@ namespace Project.Repository
 
             }
         }
-        public ProductRepository ProductRepository
+        public RequestRepository RequestRepository
         {
             get
             {
-                if (productRepository == null)
-                    productRepository = new ProductRepository(context);
-                return productRepository;
+                if (requestRepository == null)
+                    requestRepository = new RequestRepository(context);
+                return requestRepository;
 
             }
         }
-        public ProductOnayRepository ProductOnayRepository
+        public RequestOnayRepository RequestOnayRepository
         {
             get
             {
-                if (productOnayRepository == null)
-                    productOnayRepository = new ProductOnayRepository(context);
-                return productOnayRepository;
+                if (requestOnayRepository == null)
+                    requestOnayRepository = new RequestOnayRepository(context);
+                return requestOnayRepository;
 
             }
         }
-        public ProductSupplyRepository ProductSupplyRepository
+        public RequestSupplyRepository RequestSupplyRepository
         {
             get
             {
-                if (productSupplyRepository == null)
-                    productSupplyRepository = new ProductSupplyRepository(context);
-                return productSupplyRepository;
+                if (requestSupplyRepository == null)
+                    requestSupplyRepository = new RequestSupplyRepository(context);
+                return requestSupplyRepository;
 
             }
         }

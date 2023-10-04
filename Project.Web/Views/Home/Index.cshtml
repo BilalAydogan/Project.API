@@ -1,16 +1,24 @@
-﻿@{
+﻿@using Project.Web.Code;
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome to AHLATCI TECHNOLOGY</h1>
-    <div class="container col col-4">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">
-            <button class="btn btn-primary" type="button">Login Now!</button>
-        </a>
-        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">
-            <button class="btn btn-primary" type="button">Register Now!</button>
-        </a>
-     </div>
+    @if (string.IsNullOrEmpty(Repo.Session.Email))
+    {
+        <div class="container col col-4">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">
+                <button class="btn btn-primary" type="button">Login Now!</button>
+            </a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">
+                <button class="btn btn-primary" type="button">Register Now!</button>
+            </a>
+        </div>
+    }
+    else
+    {
+        <p> Welcome...</p>
+    }
     
 </div>
