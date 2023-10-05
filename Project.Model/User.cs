@@ -10,6 +10,7 @@ namespace Project.Model
     [Table("tblUser")]
     public class User
     {
+        public User() { }
         public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -17,10 +18,7 @@ namespace Project.Model
         public string Password { get; set; }
         public int RolId { get; set; }
         public int DepartmentId { get; set; }
-        public int CompanyId { get; set; }
-        public virtual Rol Rol { get; set; }
-        public virtual Department Department { get; set; }
-        public virtual Company Company { get; set; }
+        public int HoldingId { get; set; }
 
     }
 }

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Personel\Models\" />
     <Folder Include="Code\Filters\" />
   </ItemGroup>
 

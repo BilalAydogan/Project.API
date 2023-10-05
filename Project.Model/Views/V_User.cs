@@ -18,7 +18,7 @@ namespace Project.Model.Views
         public string RolName { get; set; }
         public int DepId { get; set; }
         public string DepName { get; set; }
-        public int? CompId { get; set; }
-        public string? CompName { get; set; }
+        public int HolId { get; set; }
+        public string HolName { get; set; }
     }
 }

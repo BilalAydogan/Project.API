@@ -7,23 +7,21 @@ function GetRol() {
         $.each(arr, function (i, item) {
             $('#selectRolId').append($('<option>', {
                 value: item.id,
-                text: item.name,
-                data_tokens: item.ad
-
+                text: item.name
             }));
         });
     });
 }
-function GetUsers() {
+//function GetUsers() {
 
-    Get("User/AllUsers", (data) => {
-        var arr = data;
-        var mail;
-        $.each(arr, function (i, item) {
-            mail = item.email;
-        });
-    });
-}
+//    Get("User/AllUsers", (data) => {
+//        var arr = data;
+//        var mail;
+//        $.each(arr, function (i, item) {
+//            mail = item.email;
+//        });
+//    });
+//}
 function GetDepartment() {
     Get("Department/AllDepartment", (data) => {
         $('#selectDepartmentId').empty();
@@ -31,23 +29,19 @@ function GetDepartment() {
         $.each(arr, function (i, item) {
             $('#selectDepartmentId').append($('<option>', {
                 value: item.id,
-                text: item.name,
-                data_tokens: item.ad
-
+                text: item.name
             }));
         });
     });
 }
-function GetCompany() {
-    Get("Company/AllCompany", (data) => {
-        $('#selectCompanyId').empty();
+function GetHolding() {
+    Get("Holding/AllHolding", (data) => {
+        $("#selectHoldingId").empty();
         var arr = data;
         $.each(arr, function (i, item) {
-            $('#selectCompanyId').append($('<option>', {
+            $('#selectHoldingId').append($('<option>', {
                 value: item.id,
-                text: item.name,
-                data_tokens: item.ad
-
+                text: item.name
             }));
         });
     });
@@ -61,9 +55,10 @@ function Register() {
         Password: $("#inputPassword").val(),
         RolId: $("#selectRolId").find(":selected").val(),
         DepartmentId: $("#selectDepartmentId").find(":selected").val(),
-        CompanyId: $("#selectCompanyId").find(":selected").val()
+        HoldingId: $("#selectHoldingId").find(":selected").val()
     };
     Post("User/CreateUser", user, (data) => {
+        console.log(user);
         window.location.href = '/Account/Login/';
         alert("You Can Login with your account.");
     });
@@ -71,5 +66,5 @@ function Register() {
 $(document).ready(function () {
     GetRol();
     GetDepartment();
-    GetCompany();
+    GetHolding();
 });

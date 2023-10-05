@@ -18,7 +18,7 @@ namespace Project.Repository
         private RequestOnayRepository requestOnayRepository;
         private RequestSupplyRepository requestSupplyRepository;
         private SupplyRepository supplyRepository;
-        private CompanyRepository companyRepository;
+        private HoldingRepository holdingRepository;
         public RepositoryWrapper(RepositoryContext context)
         {
             this.context = context;
@@ -34,17 +34,7 @@ namespace Project.Repository
                 return userRepository;
 
             }
-        }
-        public CompanyRepository CompanyRepository
-        {
-            get
-            {
-                if (companyRepository == null)
-                    companyRepository = new CompanyRepository(context);
-                return companyRepository;
-
-            }
-        }
+        }       
         public RolRepository RolRepository
         {
             get
@@ -122,6 +112,16 @@ namespace Project.Repository
                 if (supplyRepository == null)
                     supplyRepository = new SupplyRepository(context);
                 return supplyRepository;
+
+            }
+        }
+        public HoldingRepository HoldingRepository
+        {
+            get
+            {
+                if (holdingRepository == null)
+                    holdingRepository = new HoldingRepository(context);
+                return holdingRepository;
 
             }
         }

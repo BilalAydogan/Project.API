@@ -10,7 +10,12 @@ namespace Project.Model
     [Table("tblRol")]
     public class Rol
     {
+        public Rol()
+        {
+            Users = new HashSet<User>();
+        }
         public int Id { get; set; }
         public string Name { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

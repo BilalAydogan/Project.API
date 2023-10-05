@@ -16,21 +16,6 @@
         $("#divDepartments").html(html);
     });
 }
-function GetCompany() {
-
-    Get("Company/AllCompany", (data) => {
-        $('#selectCompanyId').empty();
-        var arr = data;
-        $.each(arr, function (i, item) {
-            $('#selectCompanyId').append($("<option>", {
-                value: item.id,
-                text: item.name,
-                data_tokens: item.ad
-
-            }));
-        });
-    });
-}
 
 let selectedDepartmentId = 0;
 
@@ -67,5 +52,4 @@ function DepartmentModify(id, name) {
 
 $(document).ready(function () {
     GetDepartment();
-    GetCompany();
 });

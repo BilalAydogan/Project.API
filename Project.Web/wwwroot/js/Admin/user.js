@@ -5,7 +5,7 @@
             <th>Name</th>
             <th>Surname</th>
             <th>Email</th>
-            <th>Company</th>
+            <th>Holding</th>
             <th>Department</th>
             <th>Rol</th>
             <th>Edit</th>
@@ -18,7 +18,7 @@
             <td>${arr[i].name}</td>
             <td>${arr[i].surname}</td>
             <td>${arr[i].email}</td>
-            <td>${arr[i].compName}</td>
+            <td>${arr[i].holName}</td>
             <td>${arr[i].depName}</td>
             <td>${arr[i].rolName}</td>
             `;

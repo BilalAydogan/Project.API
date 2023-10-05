@@ -21,6 +21,7 @@ namespace Project.Web.Controllers
                 Repo.Session.Email = model.Email;
                 Repo.Session.Token = (string)result.data;
                 Repo.Session.Rol = (string)result.rol;
+                Repo.Session.Id = (string)result.id;
 
                 if (Repo.Session.Rol == "Admin")
                     return RedirectToAction("Index", "Home", new { area = "Admin" });
@@ -40,6 +41,7 @@ namespace Project.Web.Controllers
             Repo.Session.Email = "";
             Repo.Session.Token = "";
             Repo.Session.Rol = "";
+            Repo.Session.Id = "";
 
             return RedirectToAction("Index", "Home");
         }

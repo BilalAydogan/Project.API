@@ -4,7 +4,18 @@
     {
         public static class Session
         {
-
+            public static string? Id
+            {
+                get
+                {
+                    string id = (new HttpContextAccessor()).HttpContext.Session.GetString("Id");
+                    return id;
+                }
+                set
+                {
+                    (new HttpContextAccessor()).HttpContext.Session.SetString("Id", value ?? ""); ;
+                }
+            }
             public static string? Email
             {
                 get

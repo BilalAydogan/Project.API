@@ -4,14 +4,15 @@ using Newtonsoft.Json.Linq;
 using Project.Model;
 using Project.Repository;
 using System.Linq;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Project.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CompanyController : BaseController
+    public class HoldingController : BaseController
     {
-        public CompanyController(RepositoryWrapper repo) : base(repo)
+        public HoldingController(RepositoryWrapper repo) : base(repo)
         {
         }
         [HttpPost("Save")]
@@ -19,7 +20,7 @@ namespace Project.API.Controllers
         public dynamic Save([FromBody] dynamic model)
         {
             dynamic json = JObject.Parse(model.GetRawText());
-            Company item = new Company()
+            Holding item = new Holding()
             {
                 Id = json.Id,
                 Name = json.Name
@@ -43,11 +44,11 @@ namespace Project.API.Controllers
             }
             if (item.Id > 0)
             {
-                repo.CompanyRepository.Update(item);
+                repo.HoldingRepository.Update(item);
             }
             else
             {
-                repo.CompanyRepository.Create(item);
+                repo.HoldingRepository.Create(item);
             }
 
             repo.SaveChanges();
@@ -56,10 +57,10 @@ namespace Project.API.Controllers
                 success = true
             };
         }
-        [HttpGet("AllCompany")]
-        public dynamic AllCompany()
+        [HttpGet("AllHolding")]
+        public dynamic AllHolding()
         {
-            List<Company> items = repo.CompanyRepository.FindAll().ToList<Company>();
+            List<Holding> items = repo.HoldingRepository.FindAll().ToList<Holding>();
             return new
             {
                 success = true,
@@ -78,7 +79,7 @@ namespace Project.API.Controllers
                 };
             }
 
-            repo.CompanyRepository.DeleteCompany(id);
+            repo.HoldingRepository.DeleteHolding(id);
             return new
             {
                 success = true

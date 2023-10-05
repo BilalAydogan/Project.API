@@ -24,7 +24,7 @@ namespace Project.Repository
         public DbSet<RequestSupply> RequestSupplies { get; set; }
         public DbSet<Supply> Supplies { get; set; }
         public DbSet<Department> Departments { get; set; }
-        public DbSet<Company> Companies { get; set; }
+        public DbSet<Holding> Holdings { get; set; }
         public DbSet<V_User> V_Users { get; set; }
     }
 }
