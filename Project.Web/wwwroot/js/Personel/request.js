@@ -8,7 +8,7 @@
         for (var i = 0; i < arr.length; i++) {
             html += `<tr>`;
             html += `<td>${arr[i].id}</td><td>${arr[i].name}</td><td>${arr[i].description}</td><td>${arr[i].amount}</td><td>${arr[i].userId}</td>`;
-            html += `<td><i class="bi bi-trash text-danger" onclick='DeleteRequest(${arr[i].id})'></i><i class="bi bi-pencil-square" onclick='RequestModify(${arr[i].id},"${arr[i].name}")'></i></td>`;
+            html += `<td><i class="bi bi-trash text-danger" onclick='DeleteRequest(${arr[i].id})'></i><i class="bi bi-pencil-square" onclick='RequestModify(${arr[i].id},"${arr[i].name}",${req})'></i></td>`;
             html += `</tr>`
         }
         html += `</table>`;
@@ -51,9 +51,11 @@ function DeleteRequest(id) {
     alert("Successfully");
 }
 
-function RequestModify(id, name) {
+function RequestModify(id, name,req) {
     selectedRolId = id;
     $("#inputRequestAd").val(name);
+    $("#inputDescription").val(req);
+
     $("#requestModal").modal("show");
 }
 
