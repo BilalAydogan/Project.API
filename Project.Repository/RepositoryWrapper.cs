@@ -15,7 +15,6 @@ namespace Project.Repository
         private StorageRepository storageRepository;
         private RequestRepository requestRepository;
         private RequestOnayRepository requestOnayRepository;
-        private RequestSupplyRepository requestSupplyRepository;
         private CompanyRepository companyRepository;
         public RepositoryWrapper(RepositoryContext context)
         {
@@ -80,16 +79,6 @@ namespace Project.Repository
                 if (requestOnayRepository == null)
                     requestOnayRepository = new RequestOnayRepository(context);
                 return requestOnayRepository;
-
-            }
-        }
-        public RequestSupplyRepository RequestSupplyRepository
-        {
-            get
-            {
-                if (requestSupplyRepository == null)
-                    requestSupplyRepository = new RequestSupplyRepository(context);
-                return requestSupplyRepository;
 
             }
         }
