@@ -12,13 +12,11 @@ namespace Project.Repository
         private RolRepository rolRepository;
         private UserRepository userRepository;
         private DepartmentRepository departmentRepository;
-        private DepoRepository depoRepository;
-        private ItemRepository itemRepository;
+        private StorageRepository storageRepository;
         private RequestRepository requestRepository;
         private RequestOnayRepository requestOnayRepository;
         private RequestSupplyRepository requestSupplyRepository;
-        private SupplyRepository supplyRepository;
-        private HoldingRepository holdingRepository;
+        private CompanyRepository companyRepository;
         public RepositoryWrapper(RepositoryContext context)
         {
             this.context = context;
@@ -55,23 +53,13 @@ namespace Project.Repository
 
             }
         }
-        public DepoRepository DepoRepository
+        public StorageRepository StorageRepository
         {
             get
             {
-                if (depoRepository == null)
-                    depoRepository = new DepoRepository(context);
-                return depoRepository;
-
-            }
-        }
-        public ItemRepository ItemRepository
-        {
-            get
-            {
-                if (itemRepository == null)
-                    itemRepository = new ItemRepository(context);
-                return itemRepository;
+                if (storageRepository == null)
+                    storageRepository = new StorageRepository(context);
+                return storageRepository;
 
             }
         }
@@ -105,23 +93,13 @@ namespace Project.Repository
 
             }
         }
-        public SupplyRepository SupplyRepository
+        public CompanyRepository CompanyRepository
         {
             get
             {
-                if (supplyRepository == null)
-                    supplyRepository = new SupplyRepository(context);
-                return supplyRepository;
-
-            }
-        }
-        public HoldingRepository HoldingRepository
-        {
-            get
-            {
-                if (holdingRepository == null)
-                    holdingRepository = new HoldingRepository(context);
-                return holdingRepository;
+                if (companyRepository == null)
+                    companyRepository = new CompanyRepository(context);
+                return companyRepository;
 
             }
         }

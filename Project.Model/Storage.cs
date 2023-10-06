@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace Project.Model
 {
-    [Table("tblSupply")]
-    public class Supply
+    [Table("tblStorage")]
+    public class Storage
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
+        public int CompanyId { get; set; }
         public string Description { get; set; }
-        public int Offer {  get; set; }
+        public int Amount { get; set; }
+        public DateTime EntryDate { get; set; }
     }
 }

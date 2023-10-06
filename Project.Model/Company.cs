@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Project.Model
 {
-    [Table("tblHolding")]
-    public class Holding
+    [Table("tblCompany")]
+    public class Company
     {
-        public Holding() { }
+        public Company() { }
         public int Id { get; set; }
         public string Name { get; set; }
     }

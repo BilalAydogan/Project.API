@@ -20,7 +20,7 @@ namespace Project.API.Controllers
         public dynamic Save([FromBody] dynamic model)
         {
             dynamic json = JObject.Parse(model.GetRawText());
-            Holding item = new Holding()
+            Company item = new Company()
             {
                 Id = json.Id,
                 Name = json.Name
@@ -44,11 +44,11 @@ namespace Project.API.Controllers
             }
             if (item.Id > 0)
             {
-                repo.HoldingRepository.Update(item);
+                repo.CompanyRepository.Update(item);
             }
             else
             {
-                repo.HoldingRepository.Create(item);
+                repo.CompanyRepository.Create(item);
             }
 
             repo.SaveChanges();
@@ -60,7 +60,7 @@ namespace Project.API.Controllers
         [HttpGet("AllHolding")]
         public dynamic AllHolding()
         {
-            List<Holding> items = repo.HoldingRepository.FindAll().ToList<Holding>();
+            List<Company> items = repo.CompanyRepository.FindAll().ToList<Company>();
             return new
             {
                 success = true,
@@ -79,7 +79,7 @@ namespace Project.API.Controllers
                 };
             }
 
-            repo.HoldingRepository.DeleteHolding(id);
+            repo.CompanyRepository.DeleteCompany(id);
             return new
             {
                 success = true

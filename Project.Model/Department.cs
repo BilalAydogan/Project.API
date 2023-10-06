@@ -11,10 +11,9 @@ namespace Project.Model
     public class Department
     {
         public Department() { 
-            Users = new HashSet<User>();
         }
         public int Id { get; set; }
         public string Name { get; set; }
-        public virtual ICollection<User> Users { get; set; }
+        public int CompanyId { get; set; }
     }
 }

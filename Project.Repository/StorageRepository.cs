@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Project.Repository
 {
-    public class DepoRepository : RepositoryBase<Depo>
+    public class StorageRepository : RepositoryBase<Storage>
     {
-        public DepoRepository(RepositoryContext repositoryContext) : base(repositoryContext)
+        public StorageRepository(RepositoryContext repositoryContext) : base(repositoryContext)
         {
         }
 

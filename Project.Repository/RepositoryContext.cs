@@ -16,15 +16,12 @@ namespace Project.Repository
 
         }
         public DbSet<User> Users { get; set; }
-        public DbSet<Depo> Depos { get; set; }
+        public DbSet<Storage> Storages { get; set; }
         public DbSet<Rol> Roller { get; set; }
-        public DbSet<Item> Items { get; set; }
         public DbSet<Request> Requests { get; set; }
-        public DbSet<RequestOnay> RequesttOnays { get; set; }
-        public DbSet<RequestSupply> RequestSupplies { get; set; }
-        public DbSet<Supply> Supplies { get; set; }
+        public DbSet<Ofer> Supplies { get; set; }
         public DbSet<Department> Departments { get; set; }
-        public DbSet<Holding> Holdings { get; set; }
+        public DbSet<Company> Companies { get; set; }
         public DbSet<V_User> V_Users { get; set; }
     }
 }

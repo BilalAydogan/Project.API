@@ -71,8 +71,7 @@ namespace Project.API.Controllers
                 Email = json.Email,
                 Password = json.Password,
                 RolId = json.RolId,
-                DepartmentId = json.DepartmentId,
-                HoldingId = json.HoldingId
+                DepartmentId = json.DepartmentId
             };
             if (item.Id > 0)
             {

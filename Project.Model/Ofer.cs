@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace Project.Model
 {
-    [Table("tblDepo")]
-    public class Depo
+    [Table("tblOffer")]
+    public class Ofer
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-
-        public virtual Department Department { get; set; }
-        public virtual Item Item { get; set; }
+        public string Description { get; set; }
+        public int Offer {  get; set; }// bu çakışıyor düzelt
     }
 }
