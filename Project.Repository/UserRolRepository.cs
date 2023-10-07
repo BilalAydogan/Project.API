@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Project.Repository
 {
-    public class SupplyRepository : RepositoryBase<Ofer>
+    public class UserRolRepository : RepositoryBase<UserRol>
     {
-        public SupplyRepository(RepositoryContext repositoryContext) : base(repositoryContext)
+        public UserRolRepository(RepositoryContext repositoryContext) : base(repositoryContext)
         {
         }
     }

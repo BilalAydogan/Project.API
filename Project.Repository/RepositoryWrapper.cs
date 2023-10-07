@@ -9,36 +9,30 @@ namespace Project.Repository
     public class RepositoryWrapper
     {
         private RepositoryContext context;
-        private RolRepository rolRepository;
-        private UserRepository userRepository;
-        private DepartmentRepository departmentRepository;
-        private StorageRepository storageRepository;
-        private RequestRepository requestRepository;
-        private RequestOnayRepository requestOnayRepository;
         private CompanyRepository companyRepository;
+        private DepartmentRepository departmentRepository;
+        private OferRepository oferRepository;
+        private RequestRepository requestRepository;
+        private RolRepository rolRepository;
+        private StorageRepository storageRepository;
+        private UserRepository userRepository;
+        private UserDepartmentRepository userDepartmentRepository;
+        private UserRolRepository userRolRepository;
+        
+        
+        
         public RepositoryWrapper(RepositoryContext context)
         {
             this.context = context;
         }
 
-        
-        public UserRepository UserRepository
+        public CompanyRepository CompanyRepository
         {
             get
             {
-                if (userRepository == null)
-                    userRepository = new UserRepository(context);
-                return userRepository;
-
-            }
-        }       
-        public RolRepository RolRepository
-        {
-            get
-            {
-                if (rolRepository == null)
-                    rolRepository = new RolRepository(context);
-                return rolRepository;
+                if (companyRepository == null)
+                    companyRepository = new CompanyRepository(context);
+                return companyRepository;
 
             }
         }
@@ -52,13 +46,14 @@ namespace Project.Repository
 
             }
         }
-        public StorageRepository StorageRepository
+
+        public OferRepository OferRepository
         {
             get
             {
-                if (storageRepository == null)
-                    storageRepository = new StorageRepository(context);
-                return storageRepository;
+                if (oferRepository == null)
+                    oferRepository = new OferRepository(context);
+                return oferRepository;
 
             }
         }
@@ -72,23 +67,53 @@ namespace Project.Repository
 
             }
         }
-        public RequestOnayRepository RequestOnayRepository
+        public RolRepository RolRepository
         {
             get
             {
-                if (requestOnayRepository == null)
-                    requestOnayRepository = new RequestOnayRepository(context);
-                return requestOnayRepository;
+                if (rolRepository == null)
+                    rolRepository = new RolRepository(context);
+                return rolRepository;
 
             }
         }
-        public CompanyRepository CompanyRepository
+        public StorageRepository StorageRepository
         {
             get
             {
-                if (companyRepository == null)
-                    companyRepository = new CompanyRepository(context);
-                return companyRepository;
+                if (storageRepository == null)
+                    storageRepository = new StorageRepository(context);
+                return storageRepository;
+
+            }
+        }
+        public UserRepository UserRepository
+        {
+            get
+            {
+                if (userRepository == null)
+                    userRepository = new UserRepository(context);
+                return userRepository;
+
+            }
+        }
+        public UserDepartmentRepository UserDepartmentRepository
+        {
+            get
+            {
+                if (userDepartmentRepository == null)
+                    userDepartmentRepository = new UserDepartmentRepository(context);
+                return userDepartmentRepository;
+
+            }
+        }
+        public UserRolRepository UserRolRepository
+        {
+            get
+            {
+                if (userRolRepository == null)
+                    userRolRepository = new UserRolRepository(context);
+                return userRolRepository;
 
             }
         }
