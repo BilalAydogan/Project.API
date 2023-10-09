@@ -17,7 +17,6 @@ namespace Project.Model
         public string Email { get; set; }   
         public string Password { get; set; }
         public int RolId { get; set; }
-        public int DepartmentId { get; set; }
         public int? SupervisorId { get; set; }
 
         public virtual User? Supervisor  { get; set; }//Bunu Kontrol Et V.Aka Mehmet...

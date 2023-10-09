@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 namespace Project.Model
 {
     [Table("tblOffer")]
-    public class Ofer
+    public class Offer
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public int Offer {  get; set; }// bu çakışıyor düzelt
+        public decimal Price {  get; set; }// bu çakışıyor düzelt
     }
 }

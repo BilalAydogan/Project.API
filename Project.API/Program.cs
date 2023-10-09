@@ -8,7 +8,7 @@ using System.Text.Json.Serialization;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<RepositoryContext>(opts => opts.UseSqlServer("Data Source=.\\BILAL;Initial Catalog=Project;Integrated Security=True; TrustServerCertificate=True"));
+builder.Services.AddDbContext<RepositoryContext>(opts => opts.UseSqlServer("Data Source=.\\BILAL;Initial Catalog=ProjectDB;Integrated Security=True; TrustServerCertificate=True"));
 builder.Services.AddScoped<RepositoryWrapper, RepositoryWrapper>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

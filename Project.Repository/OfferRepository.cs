@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace Project.Repository
 {
-    public class OferRepository : RepositoryBase<Ofer>
+    public class OfferRepository : RepositoryBase<Offer>
     {
-        public OferRepository(RepositoryContext repositoryContext) : base(repositoryContext)
+        public OfferRepository(RepositoryContext repositoryContext) : base(repositoryContext)
         {
             // Offer Tablosu Çakışıyor Onları Düzelt
         }
-        public void DeleteOfer(int oferId)
+        public void DeleteOffer(int offerId)
         {
-            RepositoryContext.Ofers.Where(u => u.Id == oferId).ExecuteDelete();
+            RepositoryContext.Offers.Where(u => u.Id == offerId).ExecuteDelete();
         }
     }
 }

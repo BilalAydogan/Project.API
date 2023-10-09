@@ -11,7 +11,7 @@ namespace Project.Repository
         private RepositoryContext context;
         private CompanyRepository companyRepository;
         private DepartmentRepository departmentRepository;
-        private OferRepository oferRepository;
+        private OfferRepository offerRepository;
         private RequestRepository requestRepository;
         private RolRepository rolRepository;
         private StorageRepository storageRepository;
@@ -47,13 +47,13 @@ namespace Project.Repository
             }
         }
 
-        public OferRepository OferRepository
+        public OfferRepository OfferRepository
         {
             get
             {
-                if (oferRepository == null)
-                    oferRepository = new OferRepository(context);
-                return oferRepository;
+                if (offerRepository == null)
+                    offerRepository = new OfferRepository(context);
+                return offerRepository;
 
             }
         }

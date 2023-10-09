@@ -10,9 +10,9 @@ namespace Project.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class HoldingController : BaseController
+    public class CompanyController : BaseController
     {
-        public HoldingController(RepositoryWrapper repo) : base(repo)
+        public CompanyController(RepositoryWrapper repo) : base(repo)
         {
         }
         [HttpPost("Save")]
@@ -57,8 +57,8 @@ namespace Project.API.Controllers
                 success = true
             };
         }
-        [HttpGet("AllHolding")]
-        public dynamic AllHolding()
+        [HttpGet("AllCompany")]
+        public dynamic AllCompany()
         {
             List<Company> items = repo.CompanyRepository.FindAll().ToList<Company>();
             return new

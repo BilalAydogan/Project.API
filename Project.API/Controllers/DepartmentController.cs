@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using Project.Model;
+using Project.Model.Views;
 using Project.Repository;
 using System.Linq;
 
@@ -22,7 +23,8 @@ namespace Project.API.Controllers
             Department item = new Department()
             {
                 Id = json.Id,
-                Name = json.Name
+                Name = json.Name,
+                CompanyId = json.CompanyId,
             };
 
             if (string.IsNullOrEmpty(item.Name))
@@ -60,6 +62,36 @@ namespace Project.API.Controllers
         public dynamic AllDeparment()
         {
             List<Department> items = repo.DepartmentRepository.FindAll().ToList<Department>();
+            return new
+            {
+                success = true,
+                data = items,
+            };
+        }
+        [HttpGet("DepartmentCompany")]
+        public dynamic DepartmentCompany()
+        {
+            List<V_DepartmentCompany> items = repo.DepartmentRepository.DepartmentCompany();
+            return new
+            {
+                success = true,
+                data = items,
+            };
+        }
+        [HttpGet("AllCompany")]
+        public dynamic DepartmentByCompId()
+        {
+            List<Company> items = repo.CompanyRepository.FindAll().ToList<Company>();
+            return new
+            {
+                success = true,
+                data = items,
+            };
+        }
+        [HttpGet("DepartmentByCompany/{id}")]
+        public dynamic DepartmentByCompany(int id)
+        {
+            List<Department> items = repo.DepartmentRepository.FindByCondition(x=> x.CompanyId == id).ToList<Department>();
             return new
             {
                 success = true,

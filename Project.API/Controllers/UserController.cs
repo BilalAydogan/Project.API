@@ -71,8 +71,18 @@ namespace Project.API.Controllers
                 Email = json.Email,
                 Password = json.Password,
                 RolId = json.RolId,
-                DepartmentId = json.DepartmentId
+                SupervisorId = json.SupervisorId
             };
+            if(item.Surname == "" || item.Name == "" || item.Email=="" || item.Password == "")
+            {
+                
+                    return new
+                    {
+                        success = false,
+                        message = "Please fill the inputs..."
+                    };
+                
+            } 
             if (item.Id > 0)
             {
                 repo.UserRepository.Update(item);
@@ -81,6 +91,32 @@ namespace Project.API.Controllers
             {
                 repo.UserRepository.Create(item);
             }
+            repo.SaveChanges();
+            return new
+            {
+                success = true
+            };
+        }
+        [HttpPost("CreateUserDepartment")]
+
+        public dynamic CreateUserDepartment([FromBody] dynamic model)
+        {
+            dynamic json = JObject.Parse(model.GetRawText());
+            UserDepartment item = new UserDepartment()
+            {
+                Id = json.Id,
+                UserId = json.UserId,
+                DepartmentId = json.DepartmentId
+            };
+            if (item.Id > 0)
+            {
+                repo.UserDepartmentRepository.Update(item);
+            }
+            else
+            {
+                repo.UserDepartmentRepository.Create(item);
+            }
+
             repo.SaveChanges();
             return new
             {

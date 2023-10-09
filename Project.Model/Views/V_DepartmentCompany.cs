@@ -5,16 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project.Model
+namespace Project.Model.Views
 {
-    [Table("tblDepartment")]
-    public class Department
+    [Table("V_DepartmentCompany")]
+    public class V_DepartmentCompany
     {
-        public Department() { 
-        }
         public int Id { get; set; }
         public string Name { get; set; }
+        public string CompanyName { get; set; }
         public int CompanyId { get; set; }
-        public virtual Company Company { get; set; }
     }
 }

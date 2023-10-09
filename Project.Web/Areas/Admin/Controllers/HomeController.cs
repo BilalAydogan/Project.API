@@ -17,7 +17,7 @@ namespace Project.Web.Areas.Admin.Controllers
         {
             return View();
         }
-        public IActionResult Holding()
+        public IActionResult Company()
         {
             return View();
         }

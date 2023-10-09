@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Project.Model;
+using Project.Model.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,8 @@ namespace Project.Repository
         {
             RepositoryContext.Departments.Where(u => u.Id == departmentId).ExecuteDelete();
         }
+
+        public List<V_DepartmentCompany> DepartmentCompany() => RepositoryContext.V_DepartmentOzet.OrderBy(dc => dc.CompanyName).ThenBy(dc => dc.Name).ToList<V_DepartmentCompany>();
+
     }
 }
