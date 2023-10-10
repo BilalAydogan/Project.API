@@ -15,6 +15,10 @@ namespace Project.Repository
         {
 
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<V_User>().HasNoKey();
+        }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Offer> Offers { get; set; }

@@ -13,9 +13,9 @@ namespace Project.Repository
         public UserDepartmentRepository(RepositoryContext repositoryContext) : base(repositoryContext)
         {
         }
-        public void DeleteUserDepartment(int userDepartmentId)
+        public void DeleteUserDepartment(int userDepId)
         {
-            RepositoryContext.UserDepartments.Where(r => r.Id == userDepartmentId).ExecuteDelete();
+            RepositoryContext.UserDepartments.Where(r => r.Id == userDepId).ExecuteDelete();
         }
 
     }

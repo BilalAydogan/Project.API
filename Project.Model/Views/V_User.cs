@@ -10,7 +10,7 @@ namespace Project.Model.Views
     [Table("V_User")]
     public class V_User
     {
-        public int Id { get; set; }
+        public int UserId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }
@@ -20,5 +20,6 @@ namespace Project.Model.Views
         public string? DepName { get; set; }
         public int? CompId { get; set; }
         public string? CompName { get; set; }
+        public int? UserDepId { get; set; }
     }
 }

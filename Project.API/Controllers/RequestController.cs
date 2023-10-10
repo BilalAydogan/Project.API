@@ -34,6 +34,26 @@ namespace Project.API.Controllers
                 data = items
             };
         }
+        [HttpGet("UserById/{id}")]
+        public dynamic UserById(int id)
+        {
+            List<User> items = repo.UserRepository.FindByCondition(a => a.Id == id).ToList<User>();
+            return new
+            {
+                success = true,
+                data = items
+            };
+        }
+        [HttpGet("RequestApproveId/{id}")]
+        public dynamic RequestApproveId(int id)
+        {
+            List<Request> items = repo.RequestRepository.FindByCondition(a => a.ApproveId == id).ToList<Request>();
+            return new
+            {
+                success = true,
+                data = items
+            };
+        }
         [HttpPost("Save")]
 
         public dynamic Save([FromBody] dynamic model)
@@ -45,7 +65,11 @@ namespace Project.API.Controllers
                 Name = json.Name,
                 Description = json.Description,
                 Amount = json.Amount,
-                UserId = json.UserId
+                UserId = json.UserId,
+                ApproveId = json.ApproveId,
+                RequestDate = json.RequestDate,
+                Status = json.Status,
+                ApproveDate = json.ApproveDate
             };
 
             if (string.IsNullOrEmpty(item.Name))

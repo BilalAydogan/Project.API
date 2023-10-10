@@ -11,7 +11,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <input type="hidden" id="inputUserId" class="form-control">
+                <input type="text" id="inputUserId" class="form-control">
             </div>
             <div class="input-group mb-4">
                 <span class="input-group-text">
@@ -36,6 +36,35 @@
     </div>
 </div>
 
+<div class="modal fade" id="rolModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Rol Details</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="inputUserRolId" class="form-control">
+            </div>
+            <div class="input-group mb-4">
+                <span class="input-group-text">
+                    Roles
+                </span>
+                <select class="form-control" id="selectRolId">
+                    <option value="">Please Choose a Role</option>
+                </select>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="AddRol()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="divUsers">
 </div>
+
+
 <script src="~/js/admin/user.js" asp-append-version="true"></script>

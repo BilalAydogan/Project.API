@@ -12,13 +12,13 @@ namespace Project.Model
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public int ApproveId { get; set; }
+        public int? ApproveId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public int Amount { get; set; }
         public DateTime RequestDate { get; set; }
         public int Status { get; set; }
-        public DateTime ApproveDate { get; set; }
+        public DateTime? ApproveDate { get; set; }
 
     }
 }

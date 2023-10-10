@@ -123,6 +123,32 @@ namespace Project.API.Controllers
                 success = true
             };
         }
+        [HttpPost("CreateUserRol")]
+
+        public dynamic CreateUserRol([FromBody] dynamic model)
+        {
+            dynamic json = JObject.Parse(model.GetRawText());
+            UserRol item = new UserRol()
+            {
+                Id = json.Id,
+                UserId = json.UserId,
+                RolId = json.RolId
+            };
+            if (item.Id > 0)
+            {
+                repo.UserRolRepository.Update(item);
+            }
+            else
+            {
+                repo.UserRolRepository.Create(item);
+            }
+
+            repo.SaveChanges();
+            return new
+            {
+                success = true
+            };
+        }
         [HttpDelete("Delete")]
         public dynamic Sil(int id)
         {
@@ -136,6 +162,44 @@ namespace Project.API.Controllers
             }
 
             repo.UserRepository.DeleteUser(id);
+            return new
+            {
+                success = true
+            };
+
+        }
+        [HttpDelete("DeleteUserDepartment")]
+        public dynamic DeleteUserDepartment(int id)
+        {
+            if (id <= 0)
+            {
+                return new
+                {
+                    success = false,
+                    message = "Invalid Id."
+                };
+            }
+
+            repo.UserDepartmentRepository.DeleteUserDepartment(id);
+            return new
+            {
+                success = true
+            };
+
+        }
+        [HttpDelete("DeleteUserRol")]
+        public dynamic DeleteUserRol(int id)
+        {
+            if (id <= 0)
+            {
+                return new
+                {
+                    success = false,
+                    message = "Invalid Id."
+                };
+            }
+
+            repo.UserRolRepository.DeleteUserRol(id);
             return new
             {
                 success = true

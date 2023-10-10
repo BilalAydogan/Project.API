@@ -32,9 +32,7 @@ namespace Project.API.Controllers
                 // Caching kullanılabilir
 
                 Rol rol = repo.RolRepository.FindByCondition(r => r.Id == item.RolId).SingleOrDefault<Rol>();
-
                 Dictionary<string, object> claims = new Dictionary<string, object>();
-
                 if (rol != null)
                     claims.Add(ClaimTypes.Role, rol.Name);
 

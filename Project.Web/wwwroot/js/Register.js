@@ -12,13 +12,6 @@
         window.location.href = '/Account/Login/';
         alert("You Can Login with your account.");
     });
-    var userdepartment = {
-        Id:0,
-        UserId:user.Id,
-        DepartmentId:$("#selectDepartmentId").find(":selected").val()
-    };
-    Post("User/CreateUserDepartment", userdepartment, (data) => {
-    });
 }
 function GetRol() {
     Get("Rol/AllRol", (data) => {

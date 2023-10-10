@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Project.Web.styles.css" asp-append-version="true" />
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+            integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer">
+    </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body>
@@ -34,6 +39,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="Personel" asp-controller="Home" asp-action="Request">Request</a>
                         </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Personel" asp-controller="Home" asp-action="Approve">Approve</a>
+                            </li>
                         <li class="nav-item">
                                 <a class="btn btn-danger position-absolute top-0 end-0" asp-area="" asp-controller="Account" asp-action="Logout">@Repo.Session.Email<br>Logout</a>
                         </li>

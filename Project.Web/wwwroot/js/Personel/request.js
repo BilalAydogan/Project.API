@@ -16,7 +16,17 @@
         $("#divRequest").html(html);
     });
 }
-
+function GetSupervisor() {
+    var req = $("#inputUserId").val();
+    Get("Request/UserById/" + req, (data) => {
+        
+        var arr = data;
+        for (var i = 0; i < arr.length; i++) {
+            $("#inputSupervisorId").val(arr[i].supervisorId);
+            $("#inputDate").val(moment().format());
+        }
+    });
+}
 let selectedRequestId = 0;
 
 function NewRequest() {
@@ -30,7 +40,11 @@ function SaveRequest() {
         Name: $("#inputRequestAd").val(),
         Description: $("#inputDescription").val(),
         Amount: $("#inputAmount").val(),
-        UserId: $("#inputUserId").val()
+        UserId: $("#inputUserId").val(),
+        ApproveId: $("#inputSupervisorId").val(),
+        RequestDate: moment().format(),
+        Status: 0,
+        ApproveDate: null
     };
     Post("Request/Save", request, (data) => {
         GetRequest();
@@ -55,10 +69,10 @@ function RequestModify(id, name,req) {
     selectedRolId = id;
     $("#inputRequestAd").val(name);
     $("#inputDescription").val(req);
-
     $("#requestModal").modal("show");
 }
 
 $(document).ready(function () {
-    GetRequest();
+    GetSupervisor();
+    GetRequest();    
 });
