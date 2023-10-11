@@ -16,6 +16,18 @@
                     (new HttpContextAccessor()).HttpContext.Session.SetString("Id", value ?? ""); ;
                 }
             }
+            public static string? CompanyId
+            {
+                get
+                {
+                    string companyId = (new HttpContextAccessor()).HttpContext.Session.GetString("CompanyId");
+                    return companyId;
+                }
+                set
+                {
+                    (new HttpContextAccessor()).HttpContext.Session.SetString("CompanyId", value ?? ""); ;
+                }
+            }
             public static string? Email
             {
                 get

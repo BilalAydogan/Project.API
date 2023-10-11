@@ -6,12 +6,15 @@
             <th>Surname</th>
             <th>Email</th>
             <th>Company</th>
+            <th>CompanyId</th>
             <th>Department</th>
+            <th>DepartmentId</th>
             <th>Rol</th>
+            <th>RolId</th>
+            <th>UserRolId</th>
             <th>Edit</th>
             </tr>`;
         var arr = data;
-        console.log(data);
 
         for (var i = 0; i < arr.length; i++) {
             html += `<tr>`;
@@ -20,8 +23,12 @@
             <td>${arr[i].surname}</td>
             <td>${arr[i].email}</td>
             <td>${arr[i].compName}</td>
+            <td>${arr[i].compId}</td>
             <td>${arr[i].depName}</td>
+            <td>${arr[i].depId}</td>
             <td>${arr[i].rolName}</td>
+            <td>${arr[i].rolId}</td>
+            <td>${arr[i].userRolId}</td>
             `;
             html += `<td>
             <div class="dropdown">
@@ -33,7 +40,7 @@
                             <i class="btn btn-danger dropdown-item" onclick='DeleteUserDepartment(${arr[i].userDepId})'>Remove Department</i>
                             <li><hr class="dropdown-divider"></li>
                             <i class="btn btn-info dropdown-item" onclick='NewRol(${arr[i].userId})'>Add Role</i>
-                            <i class="btn btn-danger dropdown-item" onclick='DeleteRol(${arr[i].userId})'>Delete Role</i>
+                            <i class="btn btn-danger dropdown-item" onclick='DeleteUserRol(${arr[i].userRolId})'>Delete Role</i>
               </ul>
             </div>
             

@@ -17,7 +17,7 @@ namespace Project.Model
         public string Description { get; set; }
         public int Amount { get; set; }
         public DateTime RequestDate { get; set; }
-        public int Status { get; set; }
+        public int? Status { get; set; }
         public DateTime? ApproveDate { get; set; }
 
     }

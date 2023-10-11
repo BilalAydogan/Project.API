@@ -62,11 +62,11 @@ namespace Project.API.Controllers
             Request item = new Request()
             {
                 Id = json.Id,
+                UserId = json.UserId,
+                ApproveId = json.ApproveId,
                 Name = json.Name,
                 Description = json.Description,
                 Amount = json.Amount,
-                UserId = json.UserId,
-                ApproveId = json.ApproveId,
                 RequestDate = json.RequestDate,
                 Status = json.Status,
                 ApproveDate = json.ApproveDate

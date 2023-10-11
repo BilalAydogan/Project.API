@@ -21,5 +21,6 @@ namespace Project.Model.Views
         public int? CompId { get; set; }
         public string? CompName { get; set; }
         public int? UserDepId { get; set; }
+        public int? UserRolId { get; set; }
     }
 }

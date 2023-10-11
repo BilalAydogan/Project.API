@@ -5,6 +5,7 @@ using Newtonsoft.Json.Linq;
 using Project.Model;
 using Project.Repository;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 
@@ -25,13 +26,23 @@ namespace Project.API.Controllers
             string email = json.Email;
             string password = json.Password;
 
-            User item = repo.UserRepository.FindByCondition(k => k.Email == email && k.Password == password).SingleOrDefault<User>();
+            User? item = repo.UserRepository.FindByCondition(k => k.Email == email && k.Password == password).SingleOrDefault<User>();
 
             if (item != null)
             {
                 // Caching kullanılabilir
 
-                Rol rol = repo.RolRepository.FindByCondition(r => r.Id == item.RolId).SingleOrDefault<Rol>();
+                Rol? rol = repo.RolRepository.FindByCondition(r => r.Id == item.RolId).SingleOrDefault<Rol>();
+                UserDepartment? udp = repo.UserDepartmentRepository.FindByCondition(r => r.UserId == item.Id).SingleOrDefault<UserDepartment>();
+                if (udp == null)
+                {
+                    return new
+                    {
+                        success = false,
+                        message = "Your department is not defined."
+                    };
+                }
+                Department? dep = repo.DepartmentRepository.FindByCondition(r => r.Id == udp.DepartmentId).SingleOrDefault<Department>();
                 Dictionary<string, object> claims = new Dictionary<string, object>();
                 if (rol != null)
                     claims.Add(ClaimTypes.Role, rol.Name);
@@ -52,7 +63,8 @@ namespace Project.API.Controllers
                     success = true,
                     data = tokenHandler.WriteToken(token),
                     rol = rol?.Name,
-                    id= item?.Id
+                    id = item?.Id,
+                    companyId = dep?.CompanyId
                 };
             }
             else
