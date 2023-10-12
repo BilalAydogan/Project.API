@@ -4,7 +4,6 @@
         var html = `<table class="table table-hover">` +
             `<tr><th>Request Name</th><th>Description</th><th>Amount</th><th>Request Date</th><th>Status</th><th>ApproveDate</th><th>Edit</th></tr>`;
         var arr = data;
-
         for (var i = 0; i < arr.length; i++) {
             html += `<tr>`;
             html += `

@@ -17,5 +17,9 @@ namespace Project.Web.Areas.Personel.Controllers
         {
             return View();
         }
+        public IActionResult Offer()
+        {
+            return View();
+        }
     }
 }

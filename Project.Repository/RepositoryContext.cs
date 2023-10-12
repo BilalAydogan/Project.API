@@ -18,6 +18,7 @@ namespace Project.Repository
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<V_User>().HasNoKey();
+            modelBuilder.Entity<V_Offer>().HasNoKey();
         }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Department> Departments { get; set; }
@@ -29,6 +30,7 @@ namespace Project.Repository
         public DbSet<UserDepartment> UserDepartments { get; set; }
         public DbSet<UserRol> UserRols { get; set; }
         public DbSet<V_User> V_Users { get; set; }
+        public DbSet<V_Offer> V_Offers { get; set; }
         public DbSet<V_DepartmentCompany> V_DepartmentOzet { get; set; }
     }
 }

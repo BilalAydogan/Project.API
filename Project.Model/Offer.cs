@@ -11,8 +11,12 @@ namespace Project.Model
     public class Offer
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public decimal Price {  get; set; }// bu çakışıyor düzelt
+        public int RequestId { get; set; }
+        public string UserName { get; set; }
+        public decimal Price { get; set; }
+        public string? Description { get; set; }
+        public int? Status { get; set; }
+        public DateTime OfferDate { get; set; }
+        
     }
 }

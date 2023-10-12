@@ -1,0 +1,38 @@
+﻿@using Project.Web.Code;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h2> Offer table will be added...</h2>
+<input type="hidden" value="@Repo.Session.CompanyId" id="inputCompanyId">
+<div id="divOffer"></div>
+<div class="modal fade" id="makeOfferModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Offer Details</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <input type="hidden" id="inputReqId">
+            <div class="modal-body">
+                <label for="inputRequestAd" class="form-label">Offer Name</label>
+                <input type="text" id="inputOfferName" class="form-control">
+            </div>
+            <div class="modal-body">
+                <label for="inputDescription" class="form-label">Description</label>
+                <input type="text" id="inputDescription" class="form-control">
+
+            </div>
+            <div class="modal-body">
+                <label for="inputAmount" class="form-label">Price</label>
+                <input type="text" onkeypress='validate(event)' id="inputPrice" class="form-control">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="MakeOffer()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/personel/offer.js" asp-append-version="true"></script>

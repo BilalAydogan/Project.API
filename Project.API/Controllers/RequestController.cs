@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using Project.Model;
+using Project.Model.Views;
 using Project.Repository;
 using System.Linq;
 
@@ -52,6 +53,26 @@ namespace Project.API.Controllers
             {
                 success = true,
                 data = items
+            };
+        }
+        [HttpGet("OfferByCompId/{id}")]
+        public dynamic OfferByCompId(int id)
+        {
+            List<V_Offer> items = repo.OfferRepository.OfferByCompId(id).ToList<V_Offer>();
+            return new
+            {
+                success = true,
+                data = items
+            };
+        }
+        [HttpGet("AllUs")]
+        public dynamic AllUs()
+        {
+            List<V_User> items = repo.UserRepository.UserOzet().ToList<V_User>();
+            return new
+            {
+                success = true,
+                data = items,
             };
         }
         [HttpPost("Save")]
