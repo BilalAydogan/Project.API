@@ -21,5 +21,17 @@ namespace Project.Web.Areas.Personel.Controllers
         {
             return View();
         }
+        public IActionResult Purchasing()
+        {
+            return View();
+        }
+        public IActionResult General()
+        {
+            return View();
+        }
+        public IActionResult Manager()
+        {
+            return View();
+        }
     }
 }

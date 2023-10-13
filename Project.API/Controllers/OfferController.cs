@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using Project.Model;
+using Project.Model.Views;
 using Project.Repository;
 
 namespace Project.API.Controllers
@@ -53,6 +54,46 @@ namespace Project.API.Controllers
                 success = true
             };
         }
+        [HttpGet("OfferById/{id}")]
+        public dynamic OfferById(int id)
+        {
+            List<Offer> items = repo.OfferRepository.FindByCondition(a => a.RequestId == id).ToList<Offer>();
+            return new
+            {
+                success = true,
+                data = items
+            };
+        }
+        [HttpGet("PurchasingByCompId/{id}")]
+        public dynamic PurchasingByCompId(int id)
+        {
+            List<V_Purchasing> items = repo.OfferRepository.PurchasingByCompId(id).ToList<V_Purchasing>();
+            return new
+            {
+                success = true,
+                data = items
+            };
+        }
+        [HttpGet("General/{id}")]
+        public dynamic General(int id)
+        {
+            List<V_Purchasing> items = repo.OfferRepository.GeneralByCompId(id).ToList<V_Purchasing>();
+            return new
+            {
+                success = true,
+                data = items
+            };
+        }
+        [HttpGet("Manager/{id}")]
+        public dynamic Manager(int id)
+        {
+            List<V_Purchasing> items = repo.OfferRepository.ManagerByCompId(id).ToList<V_Purchasing>();
+            return new
+            {
+                success = true,
+                data = items
+            };
+        }
         [HttpDelete("Delete")]
         public dynamic Delete(int id)
         {
@@ -72,5 +113,6 @@ namespace Project.API.Controllers
             };
 
         }
+
     }
 }
