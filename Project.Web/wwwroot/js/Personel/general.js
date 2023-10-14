@@ -35,18 +35,32 @@
             <td>${arr[i].price} ₺</td>
             <td>${formatDate(arr[i].offerDate)}</td>`;
 
-                if (arr[i].status == 1) {
-                    html += `<td>waiting to be sent to general</td>'`;
-                } else if (arr[i].status == 2) {
-                    html += `<td>upon general approval</td>'`;
-                }
+            if (arr[i].status == 1) {
+                html += `<td>waiting to general approve ${arr[i].status}</td>`;
+            } else if (arr[i].status == 2) {
+                html += `<td>upon general approval ${arr[i].status}</td>`;
+            } else if (arr[i].status == 4) {
+                html += `<td>Approved By General ${arr[i].status}</td>`;
+            } else {
+                html += `<td>Refused By General ${arr[i].status}</td>`;
+            }
                 html += `<td>
                 <div class="dropdown">
               <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 Operations
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <i class=" dropdown-item btn btn-success" onclick='General("${arr[i].offerId}","${arr[i].requestId}","${arr[i].offerName}","${arr[i].price}","${arr[i].offerDescription}","${arr[i].offerDate}")'>GenelKurul Onaylayabilecek</i>
+                <i class="dropdown-item btn btn-success"
+                onclick='GeneralAccept(
+                    "${arr[i].offerId}",
+                    "${arr[i].requestId}",
+                    "${arr[i].offerName}",
+                    "${arr[i].price}",
+                    "${arr[i].offerDescription}",
+                    "${arr[i].offerDate}"
+                )'>
+                Approve</i>
+                <i class="dropdown-item btn btn-danger" onclick='GeneralRefuse("${arr[i].offerId}","${arr[i].requestId}","${arr[i].offerName}","${arr[i].price}","${arr[i].offerDescription}","${arr[i].offerDate}")'>Refuse</i>
               </ul>
             </div>
             </td>`;
@@ -54,6 +68,38 @@
         }
         html += `</table>`;
         $("#divGeneral").html(html);
+    });
+}
+function GeneralAccept(offerId, requestId, userName, price, description, offerdate) {
+    var general = {
+        Id: offerId,
+        RequestId: requestId,
+        UserName: userName,
+        Price: price,
+        Description: description,
+        Status: 4,
+        OfferDate: offerdate
+    };
+    Post("Offer/Save", general, (data) => {
+        alert("Offer Approved Successfully");
+        General();
+
+    });
+}
+function GeneralRefuse(offerId, requestId, userName, price, description, offerdate) {
+    var general = {
+        Id: offerId,
+        RequestId: requestId,
+        UserName: userName,
+        Price: price,
+        Description: description,
+        Status: 6,
+        OfferDate: offerdate
+    };
+    Post("Offer/Save", general, (data) => {
+        alert("Offer Refused Successfully");
+        General();
+
     });
 }
 function formatDate(inputDate) {

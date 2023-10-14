@@ -36,9 +36,13 @@
             <td>${formatDate(arr[i].offerDate)}</td>`;
 
             if (arr[i].status == 1) {
-                html += `<td>waiting to be sent to general</td>'`;
+                html += `<td>waiting to manager approve</td>`;
             } else if (arr[i].status == 3) {
-                html += `<td>upon manager approval</td>'`;
+                html += `<td>upon manager approval</td>`;
+            } else if (arr[i].status == 4) {
+                html += `<td>Approved By Manager ${arr[i].status}</td>`;
+            } else {
+                html += `<td>Refused By Manager ${arr[i].status}</td>`;
             }
             html += `<td>
                 <div class="dropdown">
@@ -46,7 +50,8 @@
                 Operations
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <i class=" dropdown-item btn btn-success" onclick='General("${arr[i].offerId}","${arr[i].requestId}","${arr[i].offerName}","${arr[i].price}","${arr[i].offerDescription}","${arr[i].offerDate}")'>GenelKurul Onaylayabilecek</i>
+                <i class=" dropdown-item btn btn-success" onclick='ManagerAccept("${arr[i].offerId}","${arr[i].requestId}","${arr[i].offerName}","${arr[i].price}","${arr[i].offerDescription}","${arr[i].offerDate}")'>Approve</i>
+                <i class=" dropdown-item btn btn-success" onclick='ManagerRefuse("${arr[i].offerId}","${arr[i].requestId}","${arr[i].offerName}","${arr[i].price}","${arr[i].offerDescription}","${arr[i].offerDate}")'>Refuse</i>
               </ul>
             </div>
             </td>`;
@@ -54,6 +59,38 @@
         }
         html += `</table>`;
         $("#divManager").html(html);
+    });
+}
+function ManagerAccept(offerId, requestId, userName, price, description, offerdate) {
+    var general = {
+        Id: offerId,
+        RequestId: requestId,
+        UserName: userName,
+        Price: price,
+        Description: description,
+        Status: 4,
+        OfferDate: offerdate
+    };
+    Post("Offer/Save", general, (data) => {
+        alert("Offer Approved Successfully");
+        Manager();
+
+    });
+}
+function ManagerRefuse(offerId, requestId, userName, price, description, offerdate) {
+    var general = {
+        Id: offerId,
+        RequestId: requestId,
+        UserName: userName,
+        Price: price,
+        Description: description,
+        Status: 6,
+        OfferDate: offerdate
+    };
+    Post("Offer/Save", general, (data) => {
+        alert("Offer Refused Successfully");
+        Manager();
+
     });
 }
 function formatDate(inputDate) {
