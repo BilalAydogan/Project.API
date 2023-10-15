@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using Project.Model;
+using Project.Model.Views;
 using Project.Repository;
 using System.Linq;
 
@@ -22,6 +23,26 @@ namespace Project.API.Controllers
             {
                 success = true,
                 data = items,
+            };
+        }
+        [HttpGet("StorageById/{id}")]
+        public dynamic StorageById(int id)
+        {
+            List<Request> items = repo.RequestRepository.FindByCondition(a => a.UserId == id && a.Status >= 0).ToList<Request>();
+            return new
+            {
+                success = true,
+                data = items
+            };
+        }
+        [HttpGet("StorageByCompId/{id}")]
+        public dynamic StorageByCompId(int id)
+        {
+            List<V_Storage> items = repo.StorageRepository.StorageByCompId(id).ToList<V_Storage>();
+            return new
+            {
+                success = true,
+                data = items
             };
         }
         [HttpPost("Save")]

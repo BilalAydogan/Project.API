@@ -20,6 +20,7 @@ namespace Project.Repository
             modelBuilder.Entity<V_User>().HasNoKey();
             modelBuilder.Entity<V_Offer>().HasNoKey();
             modelBuilder.Entity<V_Purchasing>().HasNoKey();
+            modelBuilder.Entity<V_Storage>().HasNoKey();
         }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Department> Departments { get; set; }
@@ -33,6 +34,7 @@ namespace Project.Repository
         public DbSet<V_User> V_Users { get; set; }
         public DbSet<V_Offer> V_Offers { get; set; }
         public DbSet<V_Purchasing> V_Purchasings { get; set; }
+        public DbSet<V_Storage> V_Storages { get; set; }
         public DbSet<V_DepartmentCompany> V_DepartmentOzet { get; set; }
     }
 }
