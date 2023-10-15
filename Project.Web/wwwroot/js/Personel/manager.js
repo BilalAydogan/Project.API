@@ -41,8 +41,10 @@
                 html += `<td>upon manager approval</td>`;
             } else if (arr[i].status == 4) {
                 html += `<td>Approved By Manager ${arr[i].status}</td>`;
-            } else {
+            } else if (arr[i].status == 6) {
                 html += `<td>Refused By Manager ${arr[i].status}</td>`;
+            } else if (arr[i].status == 5) {
+                html += `<td>Stocked ${arr[i].status}</td>`;
             }
             html += `<td>
                 <div class="dropdown">

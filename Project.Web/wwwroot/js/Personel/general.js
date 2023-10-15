@@ -36,13 +36,15 @@
             <td>${formatDate(arr[i].offerDate)}</td>`;
 
             if (arr[i].status == 1) {
-                html += `<td>waiting to general approve ${arr[i].status}</td>`;
+                html += `<td>waiting to general approve</td>`;
             } else if (arr[i].status == 2) {
-                html += `<td>upon general approval ${arr[i].status}</td>`;
+                html += `<td>upon general approval</td>`;
             } else if (arr[i].status == 4) {
-                html += `<td>Approved By General ${arr[i].status}</td>`;
-            } else {
-                html += `<td>Refused By General ${arr[i].status}</td>`;
+                html += `<td>Approved By General</td>`;
+            } else if (arr[i].status == 6) {
+                html += `<td>Refused By General</td>`;
+            } else if (arr[i].status == 5) {
+                html += `<td>Stocked ${arr[i].status}</td>`;
             }
                 html += `<td>
                 <div class="dropdown">

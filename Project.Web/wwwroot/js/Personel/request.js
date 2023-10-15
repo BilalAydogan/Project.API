@@ -16,6 +16,24 @@
         $("#divRequest").html(html);
     });
 }
+function GetCurrentRequest() {
+    var req = $("#inputUserId").val();
+    Get("Request/CurentRequestById/" + req, (data) => {
+        var html = `<table class="table table-hover">` +
+            `<tr><th>Request Name</th><th>Description</th><th>Amount</th><th>Request Date</th><th>Status</th><th>ApproveDate</th></tr>`;
+        var arr = data;
+
+        for (var i = 0; i < arr.length; i++) {
+            html += `<tr>`;
+            html += `<td>${arr[i].name}</td><td>${arr[i].description}</td><td>${arr[i].amount}</td><td>${arr[i].requestDate}</td><td>${arr[i].status === null ? 'Waiting...' : arr[i].status ? 'Approved' : 'Refused'}</td><td>${arr[i].approveDate === null ? 'Waiting...' : arr[i].approveDate}</td>`;
+            html += `<td><i class="bi bi-trash text-danger" onclick='DeleteRequest(${arr[i].id})'></i><i class="bi bi-pencil-square" onclick='RequestModify(${arr[i].id},"${arr[i].name}",${req})'></i></td>`;
+            html += `</tr>`
+        }
+        html += `</table>`;
+
+        $("#divCurrentRequest").html(html);
+    });
+}
 function GetSupervisor() {
     var req = $("#inputUserId").val();
     Get("Request/UserById/" + req, (data) => {
@@ -74,5 +92,6 @@ function RequestModify(id, name,req) {
 
 $(document).ready(function () {
     GetSupervisor();
-    GetRequest();    
+    GetRequest();
+    GetCurrentRequest();
 });

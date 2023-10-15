@@ -10,7 +10,7 @@ namespace Project.Model
     [Table("tblStorage")]
     public class Storage
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public int CompanyId { get; set; }
         public string Description { get; set; }

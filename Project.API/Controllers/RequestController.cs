@@ -28,7 +28,17 @@ namespace Project.API.Controllers
         [HttpGet("RequestById/{id}")]
         public dynamic RequestById(int id)
         {
-            List<Request> items = repo.RequestRepository.FindByCondition(a => a.UserId == id).ToList<Request>();
+            List<Request> items = repo.RequestRepository.FindByCondition(a => a.UserId == id && a.Status >= 0).ToList<Request>();
+            return new
+            {
+                success = true,
+                data = items
+            };
+        }
+        [HttpGet("CurentRequestById/{id}")]
+        public dynamic CurentRequestById(int id)
+        {
+            List<Request> items = repo.RequestRepository.FindByCondition(a => a.UserId == id && a.Status == null).ToList<Request>();
             return new
             {
                 success = true,
@@ -48,7 +58,17 @@ namespace Project.API.Controllers
         [HttpGet("RequestApproveId/{id}")]
         public dynamic RequestApproveId(int id)
         {
-            List<Request> items = repo.RequestRepository.FindByCondition(a => a.ApproveId == id).ToList<Request>();
+            List<Request> items = repo.RequestRepository.FindByCondition(a => a.ApproveId == id && a.Status >= 0).ToList<Request>();
+            return new
+            {
+                success = true,
+                data = items
+            };
+        }
+        [HttpGet("CurrentRequestApproveId/{id}")]
+        public dynamic CurrentRequestApproveId(int id)
+        {
+            List<Request> items = repo.RequestRepository.FindByCondition(a => a.ApproveId == id && a.Status == null).ToList<Request>();
             return new
             {
                 success = true,

@@ -33,5 +33,9 @@ namespace Project.Web.Areas.Personel.Controllers
         {
             return View();
         }
+        public IActionResult Storage()
+        {
+            return View();
+        }
     }
 }

@@ -23,10 +23,38 @@
                             <div class="mb-4">
                                 <h2 class="mb-1 text-muted">Invoice Details</h2>
                             </div>
-                            <div class="text-muted">
-                                <p class="mb-1">3184 Spruce Drive Pittsburgh, PA 15201</p>
-                                <p class="mb-1"><i class="uil uil-envelope-alt me-1"></i> xyz@987.com</p>
-                                <p><i class="uil uil-phone me-1"></i> 012-345-6789</p>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="text-muted">
+                                        <h5 class="font-size-16 mb-3 text-dark">Requester :</h5>
+                                        <h5 class="font-size-16 mb-3 text-dark">Requester Name :</h5>
+                                        <h5 class="font-size-15 mb-2 " id="RequesterName"></h5>
+                                        <h5 class="font-size-16 mb-3 text-dark">Requester Department :</h5>
+                                        <p class="mb-1" id="RequesterDep"><i class="uil uil-envelope-alt me-1"></i></p>
+                                        <h5 class="font-size-16 mb-3 text-dark">Request Name :</h5>
+                                        <p id="RequestName"><i class="mb-1"></i></p>
+                                        <h5 class="font-size-16 mb-3 text-dark">Request Description :</h5>
+                                        <p id="RequestDescription"><i class="mb-1"></i></p>
+                                    </div>
+                                </div>
+                                <!-- end col -->
+                                <div class="col-sm-6">
+                                    <div class="text-muted text-sm-end">
+                                        <div>
+                                            <h5 class="font-size-15 mb-1 text-dark">Request No:</h5>
+                                            <p id="RequestId"></p>
+                                        </div>
+                                        <div class="mt-4">
+                                            <h5 class="font-size-15 mb-1 text-dark">Request Date:</h5>
+                                            <p id="requestDate"></p>
+                                        </div>
+                                        <div class="mt-4">
+                                            <h5 class="font-size-15 mb-1 text-dark">Approve Date:</h5>
+                                            <p id="approveDate"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end col -->
                             </div>
                         </div>
 
@@ -35,23 +63,26 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="text-muted">
-                                    <h5 class="font-size-16 mb-3">Billed To:</h5>
-                                    <h5 class="font-size-15 mb-2">Preston Miller</h5>
-                                    <p class="mb-1">4068 Post Avenue Newfolden, MN 56738</p>
+                                    <h5 class="font-size-16 mb-3 text-dark">Supplier :</h5>
+                                    <h5 class="font-size-16 mb-3 text-dark">Supplier Name :</h5>
+                                    <p class="mb-1" id="offerName"></p>
+                                    <h5 class="font-size-16 mb-3 text-dark">Supplier Description :</h5>
+                                    <p class="mb-1" id="offerDescription"></p>
+									@* <h5 class="font-size-16 mb-3 text-dark">Offerer :</h5>
                                     <p class="mb-1">PrestonMiller@armyspy.com</p>
-                                    <p>001-234-5678</p>
+                                    <p>001-234-5678</p>*@
                                 </div>
                             </div>
                             <!-- end col -->
                             <div class="col-sm-6">
                                 <div class="text-muted text-sm-end">
                                     <div>
-                                        <h5 class="font-size-15 mb-1">Invoice No:</h5>
-                                        <p>#DZ0112</p>
+                                        <h5 class="font-size-15 mb-1 text-dark">Offer No:</h5>
+                                        <p id ="offerId"></p>
                                     </div>
                                     <div class="mt-4">
-                                        <h5 class="font-size-15 mb-1">Invoice Date:</h5>
-                                        <p>12 Oct, 2020</p>
+                                        <h5 class="font-size-15 mb-1 text-dark">Offer Date:</h5>
+                                        <p id="offerDate"></p>
                                     </div>
                                 </div>
                             </div>
@@ -77,12 +108,12 @@
                                             <th scope="row">01</th>
                                             <td>
                                                 <div>
-                                                    <h5 class="text-truncate font-size-14 mb-1">Black Strap A012</h5>
-                                                    <p class="text-muted mb-0">Watch, Black</p>
+                                                    <h5 class="text-truncate font-size-14 mb-1" id="summaryName"></h5>
+                                                    <p class="text-muted mb-0" id="summaryDescription"></p>
                                                 </div>
                                             </td>
-                                            <td>1</td>
-                                            <td class="text-end">245.50</td>
+                                            <td id="amount"></td>
+                                            <td class="text-end" id="price"></td>
                                         </tr>
                                     </tbody><!-- end tbody -->
                                 </table><!-- end table -->
@@ -90,7 +121,7 @@
                             <div class="d-print-none mt-4">
                                 <div class="float-end">
                                     <a href="javascript:window.print()" class="btn btn-success me-1"><i class="fa fa-print"></i></a>
-                                    <a href="#" class="btn btn-primary w-md">Add to Stock</a>
+                                    <a onclick="SendStock()" class="btn btn-primary w-md">Send to Stock</a>
                                 </div>
                             </div>
                         </div>

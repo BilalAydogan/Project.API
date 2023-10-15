@@ -39,37 +39,113 @@
                 } else if (arr[i].status == 2) {
                     html += `<td>upon general approval</td>`;
                 } else if (arr[i].status == 4) {
-                    html += `<td>Approved ${arr[i].status}</td>`;
+                    html += `<td>Approved </td>`;
                 } else if (arr[i].status == 6) {
-                    html += `<td>Refused ${arr[i].status}</td>`;
+                    html += `<td>Refused </td>`;
+                }
+                else if (arr[i].status == 5) {
+                    html += `<td>Stocked </td>`;
                 }
                 html += `<td>
                 <div class="dropdown">
               <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 Operations
               </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">`;
+            if (arr[i].status == 4) {
+                html += `
                 <i class=" dropdown-item btn btn-success"
                 onclick='General(
-                    "${arr[i].offerId}",
                     "${arr[i].requestId}",
+                    "${arr[i].userName}",
+                    "${arr[i].userSurname}",
+                    "${arr[i].depName}",
+                    "${arr[i].requestName}",
+                    "${arr[i].requestDescription}",
+                    "${arr[i].requestDate}",
+                    "${arr[i].approveDate}",
+                    "${arr[i].offerId}",
                     "${arr[i].offerName}",
+                    "${arr[i].amount}",
                     "${arr[i].price}",
                     "${arr[i].offerDescription}",
                     "${arr[i].offerDate}"
-                )'>Show Invoice</i>
+                )'>Show Invoice</i>`;
+            } 
+                else {
+                html += `<i class=" dropdown-item btn btn-success">Else</i>`;
+                }
+            html += `<i class=" dropdown-item btn btn-success"
+            onclick='SendStock(
+                "${arr[i].companyId}",
+                "${arr[i].requestName}",
+                "${arr[i].amount}",
+                "${arr[i].requestDescription}",
+                "${arr[i].offerId}",
+                "${arr[i].requestId}",
+                "${arr[i].userName}",
+                "${arr[i].price}",
+                "${arr[i].offerdescription}",
+                "${arr[i].offerDate}"
+            )'>Send to Stock</i>`;
+            html +=`
               </ul>
             </div>
-            </td>`;
-              
-            html += `</tr>`
+            </td>`
+            html += `</tr>`;
         }
         html += `</table>`;
         $("#divPurchasing").html(html);
     });
 }
-function General(offerId, requestId, userName, price, description, offerdate) {
+function General(
+    requestId, userName, userSurname, depName, requestName, requestDescription, requestDate, approveDate,
+    offerId, offerName, amount, price, offerDescription, offerDate) {
+    $("#RequestId").text(requestId);
+    $("#RequesterName").text(userName + " " + userSurname);
+    $("#RequesterDep").text(depName);
+    $("#RequestName").text(requestName);
+    $("#RequestDescription").text(requestDescription);
+    $("#amount").text(amount);
+    $("#offerId").text(offerId);
+    $("#offerName").text(offerName);
+    $("#price").text(price + " ₺");
+    $("#offerDescription").text(offerDescription);
+    $("#offerDate").text(formatDate(offerDate));
+    $("#requestDate").text(formatDate(requestDate));
+    $("#approveDate").text(formatDate(approveDate));
+    $("#summaryName").text(requestName);
+    $("#summaryDescription").text(requestDescription);
     $("#invoiceModal").modal("show");
+}
+function SendStock(companyId, requestName, amount, description, offerId, requestId, userName, price, offerdescription,offerDate) {
+    var storage = {
+        Id: 0,
+        CompanyId: companyId,
+        Name: requestName,
+        Amount: amount,
+        Description: description,
+        EntryDate: moment().format()
+    };
+    Post("Storage/Save", storage, (data) => {
+        alert("Stored Successfully");
+        GetPurchasing();
+
+    });
+    var general = {
+        Id: offerId,
+        RequestId: requestId,
+        UserName: userName,
+        Price: price,
+        Description: offerdescription,
+        Status: 5,
+        OfferDate: offerDate
+    };
+    Post("Offer/Save", general, (data) => {
+        alert("Status Change to Stored Successfully");
+        Manager();
+
+    });
 }
 function formatDate(inputDate) {
     const dateObj = new Date(inputDate);
