@@ -18,7 +18,8 @@ namespace Project.Repository
         {
             RepositoryContext.Storages.Where(r => r.Id == id).ExecuteDelete();
         }
-        public List<V_Storage> StorageByCompId(int id) => RepositoryContext.V_Storages.Where(x => x.CompanyId == id).OrderByDescending(x => x.StorageId).ToList();
+        public List<Storage> StorageByCompId(int id) => RepositoryContext.Storages.Where(x => x.CompanyId == id && x.Amount>0).OrderByDescending(x => x.Id).ToList();
+        public List<Storage> UnStorageByCompId(int id) => RepositoryContext.Storages.Where(x => x.CompanyId == id && x.Amount == 0).OrderByDescending(x => x.Id).ToList();
 
     }
 }

@@ -35,10 +35,21 @@ namespace Project.API.Controllers
                 data = items
             };
         }
+        
+            [HttpGet("UnStorageByCompId/{id}")]
+        public dynamic UnStorageByCompId(int id)
+        {
+            List<Storage> items = repo.StorageRepository.UnStorageByCompId(id).ToList<Storage>();
+            return new
+            {
+                success = true,
+                data = items
+            };
+        }
         [HttpGet("StorageByCompId/{id}")]
         public dynamic StorageByCompId(int id)
         {
-            List<V_Storage> items = repo.StorageRepository.StorageByCompId(id).ToList<V_Storage>();
+            List<Storage> items = repo.StorageRepository.StorageByCompId(id).ToList<Storage>();
             return new
             {
                 success = true,

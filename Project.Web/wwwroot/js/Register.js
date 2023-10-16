@@ -9,7 +9,6 @@
         SupervisorId: $("#selectUserId").find(":selected").val(),
     };
     Post("User/CreateUser", user, (data) => {
-        window.location.href = '/Account/Login/';
         alert("You Can Login with your account.");
     });
 }

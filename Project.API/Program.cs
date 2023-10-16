@@ -8,8 +8,8 @@ using System.Text.Json.Serialization;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-//builder.Services.AddDbContext<RepositoryContext>(opts => opts.UseSqlServer("Data Source=.\\BILAL;Initial Catalog=ProjectDB;Integrated Security=True; TrustServerCertificate=True"));
-builder.Services.AddDbContext<RepositoryContext>(opts => opts.UseSqlServer("Data Source=.\\SQLSERVER;Initial Catalog=ProjectDB;Integrated Security=True; TrustServerCertificate=True"));
+builder.Services.AddDbContext<RepositoryContext>(opts => opts.UseSqlServer("Data Source=.\\BILAL;Initial Catalog=ProjectDB;Integrated Security=True; TrustServerCertificate=True"));
+//builder.Services.AddDbContext<RepositoryContext>(opts => opts.UseSqlServer("Data Source=.\\SQLSERVER;Initial Catalog=ProjectDB;Integrated Security=True; TrustServerCertificate=True"));
 
 builder.Services.AddScoped<RepositoryWrapper, RepositoryWrapper>();
 builder.Services.AddControllers();

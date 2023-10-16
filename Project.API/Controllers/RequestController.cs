@@ -95,6 +95,24 @@ namespace Project.API.Controllers
                 data = items,
             };
         }
+        [HttpDelete("Delete")]
+        public dynamic Delete(int id)
+        {
+            if (id <= 0)
+            {
+                return new
+                {
+                    success = false,
+                    message = "Invalid id"
+                };
+            }
+            repo.RequestRepository.DeleteRequest(id);
+            return new
+            {
+                success = true
+            };
+
+        }
         [HttpPost("Save")]
 
         public dynamic Save([FromBody] dynamic model)

@@ -70,12 +70,7 @@
                     "${arr[i].price}",
                     "${arr[i].offerDescription}",
                     "${arr[i].offerDate}"
-                )'>Show Invoice</i>`;
-            } 
-                else {
-                html += `<i class=" dropdown-item btn btn-success">Else</i>`;
-                }
-            html += `<i class=" dropdown-item btn btn-success"
+                )'>Show Invoice</i><i class=" dropdown-item btn btn-success"
             onclick='SendStock(
                 "${arr[i].companyId}",
                 "${arr[i].requestName}",
@@ -87,7 +82,11 @@
                 "${arr[i].price}",
                 "${arr[i].offerdescription}",
                 "${arr[i].offerDate}"
-            )'>Send to Stock</i>`;
+            )'>Send to Stock</i> `
+            } 
+                else {
+                html += `<i class=" dropdown-item btn btn-success">Nothing to Do...</i>`;
+                }
             html +=`
               </ul>
             </div>
@@ -146,6 +145,9 @@ function SendStock(companyId, requestName, amount, description, offerId, request
         Manager();
 
     });
+}
+function modalclose() {
+    $("#invoiceModal").modal("hide");
 }
 function formatDate(inputDate) {
     const dateObj = new Date(inputDate);

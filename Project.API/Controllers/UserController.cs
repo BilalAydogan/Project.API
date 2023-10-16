@@ -73,7 +73,16 @@ namespace Project.API.Controllers
                 RolId = json.RolId,
                 SupervisorId = json.SupervisorId
             };
-            if(item.Surname == "" || item.Name == "" || item.Email=="" || item.Password == "")
+            User items = repo.UserRepository.FindByCondition(u => u.Email == item.Email).SingleOrDefault<User>();
+            if (items?.Email.Length > 0)
+            {
+                return new
+                {
+                    success = false,
+                    message = "Email Already Exists..."
+                };
+            }
+            if (item.Surname == "" || item.Name == "" || item.Email=="" || item.Password == "")
             {
                 
                     return new

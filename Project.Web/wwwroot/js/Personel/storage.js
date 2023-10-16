@@ -18,9 +18,23 @@
             <td>${arr[i].amount}</td>
             <td>${formatDate(arr[i].entryDate)}</td>`;
             if (arr[i].amount > 0) {
-                html += `<td><i onclick='UseStock("${arr[i].storageId}","${arr[i].companyId}","${arr[i].name}","${arr[i].description}","${arr[i].amount}","${arr[i].entryDate}")' class="dropdown-item btn btn-success">Use from Storage</i> </td>`;
+                html += `<td>
+                 <div class="dropdown">
+              <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Operations
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <i onclick='UseStock("${arr[i].id}","${arr[i].companyId}","${arr[i].name}","${arr[i].description}","${arr[i].amount}","${arr[i].entryDate}")' class="dropdown-item btn btn-success">Use from Storage</i></ul> </td>`;
+                
             } else {
-                html += `<td>Don't Have More Stock </td>`;
+                html += `<td> <div class="dropdown">
+              <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Operations
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <i class=" dropdown-item btn btn-success" onclick='UseStock("${arr[i].id}","${arr[i].companyId}","${arr[i].name}","${arr[i].description}","${arr[i].amount}","${arr[i].entryDate}")'>Add Stock</i>
+              <i class=" dropdown-item btn btn-success" onclick='Delete(${arr[i].id})'>Delete</i>
+              </ul> </td>`;
             }
             html +=`
             </ul>
@@ -30,6 +44,54 @@
         }
         html += `</table>`;
         $("#divStorage").html(html);
+    });
+}
+function GetUnStorage() {
+    var req = $("#inputCompanyId").val();
+    Get("Storage/UnStorageByCompId/" + req, (data) => {
+        var html = `<table class="table table-hover">` +
+            `<tr>
+            <th>Item Name</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Entry Date</th>
+            <th>Operations</th>
+            </tr>`;
+        var arr = data;
+        for (var i = 0; i < arr.length; i++) {
+            html += `<tr>`;
+            html += `
+            <td>${arr[i].name}</td>
+            <td>${arr[i].description}</td>
+            <td>${arr[i].amount}</td>
+            <td>${formatDate(arr[i].entryDate)}</td>`;
+            if (arr[i].amount > 0) {
+                html += `<td>
+                 <div class="dropdown">
+              <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Operations
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <i onclick='UseStock("${arr[i].id}","${arr[i].companyId}","${arr[i].name}","${arr[i].description}","${arr[i].amount}","${arr[i].entryDate}")' class="dropdown-item btn btn-success">Use from Storage</i></ul> </td>`;
+
+            } else {
+                html += `<td> <div class="dropdown">
+              <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Operations
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"><i class=" dropdown-item btn btn-success" onclick='UseStock("${arr[i].id}","${arr[i].companyId}","${arr[i].name}","${arr[i].description}","${arr[i].amount}","${arr[i].entryDate}")'>Add Stock</i>
+              <i class=" dropdown-item btn btn-success" onclick='Delete(${arr[i].id})'>Delete</i> </ul>
+              </ul>
+              </td>`;
+            }
+            html += `
+            </ul>
+            </div>
+            </td>`
+            html += `</tr>`;
+        }
+        html += `</table>`;
+        $("#divUnStorage").html(html);
     });
 }
 function UseStock(storageId, companyId, name, description, amount, entryDate) {
@@ -53,9 +115,18 @@ function UseStorage() {
     Post("Storage/Save", storage, (data) => {
         alert("Store used Successfully");
         GetStorage();
+        GetUnStorage();
         $("#StorageModal").modal("hide");
     });
 }
+function DeleteRol(id) {
+    Delete(`Storage/Delete?id=${id}`, (data) => {
+        GetStorage();
+        GetUnStorage();
+    });
+    alert("Successfully");
+}
+
 function validate(evt) {
     var theEvent = evt || window.event;
 
@@ -83,4 +154,5 @@ function formatDate(inputDate) {
 }
 $(document).ready(function () {
     GetStorage();
+    GetUnStorage();
 });

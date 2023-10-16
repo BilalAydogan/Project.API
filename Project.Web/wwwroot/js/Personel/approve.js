@@ -85,6 +85,7 @@ function Approve(id, name, userId, ApproveId, description, amount, requestDate) 
         };
         Post("Request/Save", app, (data) => {
             GetApprove();
+            GetCurrentApprove();
             alert("Approved");
         });
 }
@@ -102,6 +103,7 @@ function Refuse(id, name, userId, ApproveId, description, amount, requestDate) {
     };
     Post("Request/Save", app, (data) => {
         GetApprove();
+        GetCurrentApprove();
         alert("Refused");
     });
 }

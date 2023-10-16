@@ -34,20 +34,15 @@
             </div>
             <div class="modal-body">
                 <label for="inputAmount" class="form-label">Amount</label>
-                <input type="text" id="inputAmount" class="form-control">
+                <input type="number" id="inputAmount" class="form-control">
             </div>
-            <div class="modal-body">
-                <label for="inputDate" class="form-label">Date</label>
-                <input type="text" id="inputDate" class="form-control" value="">
-            </div>
-            <div class="modal-body">
-                <label for="inputUserId" class="form-label">User Id</label>
-                <input type="text" id="inputUserId" class="form-control" value="@Repo.Session.Id">
-            </div>
-            <div class="modal-body">
-                <label for="inputSupervisorId" class="form-label">Supervisor Id</label>
-                <input type="text" id="inputSupervisorId" class="form-control">
-            </div>
+            
+                <input type="hidden" id="inputDate" class="form-control" value="">
+            
+                <input type="hidden" id="inputUserId" class="form-control" value="@Repo.Session.Id">
+            
+                <input type="hidden" id="inputSupervisorId" class="form-control">
+           
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 <button type="button" class="btn btn-primary" onclick="SaveRequest()">Save</button>

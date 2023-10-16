@@ -1,4 +1,5 @@
-﻿using Project.Model;
+﻿using Microsoft.EntityFrameworkCore;
+using Project.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,10 @@ namespace Project.Repository
     {
         public RequestRepository(RepositoryContext repositoryContext) : base(repositoryContext)
         {
+        }
+        public void DeleteRequest(int offerId)
+        {
+            RepositoryContext.Requests.Where(u => u.Id == offerId).ExecuteDelete();
         }
     }
 }

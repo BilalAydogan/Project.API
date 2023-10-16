@@ -110,6 +110,7 @@ function AcceptOffer(offerId, requestId, userName, price, description,offerdate)
     };
     Post("Offer/Save", den, (data) => {
         alert("Offer Approved Successfully");
+        $("#showOfferModal").modal("hide");
 
     });
 
@@ -126,6 +127,7 @@ function RefuseOffer(offerId, requestId, userName, price, description, offerdate
     };
     Post("Offer/Save", den, (data) => {
         alert("Offer Successfully Refused");
+        $("#showOfferModal").modal("hide");
 
     });
 

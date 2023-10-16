@@ -16,7 +16,6 @@ namespace Project.Model.Views
         public string Description { get; set; }
         public int Amount { get; set; }
         public DateTime EntryDate { get; set; }
-        public string DepName { get; set; }
-        public int DepId { get; set; }
+        public string CompName { get; set; }
     }
 }

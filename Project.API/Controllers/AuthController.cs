@@ -33,7 +33,7 @@ namespace Project.API.Controllers
                 // Caching kullanılabilir
 
                 Rol? rol = repo.RolRepository.FindByCondition(r => r.Id == item.RolId).SingleOrDefault<Rol>();
-                UserDepartment? udp = repo.UserDepartmentRepository.FindByCondition(r => r.UserId == item.Id).SingleOrDefault<UserDepartment>();
+                UserDepartment? udp = repo.UserDepartmentRepository.FindByCondition(r => r.UserId == item.Id).First<UserDepartment>();
                 if (udp == null)
                 {
                     return new
@@ -42,7 +42,7 @@ namespace Project.API.Controllers
                         message = "Your department is not defined."
                     };
                 }
-                Department? dep = repo.DepartmentRepository.FindByCondition(r => r.Id == udp.DepartmentId).SingleOrDefault<Department>();
+                Department? dep = repo.DepartmentRepository.FindByCondition(r => r.Id == udp.DepartmentId).First<Department>();
                 Dictionary<string, object> claims = new Dictionary<string, object>();
                 if (rol != null)
                     claims.Add(ClaimTypes.Role, rol.Name);
