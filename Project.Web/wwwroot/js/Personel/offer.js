@@ -29,41 +29,6 @@
 }
 function ShowOffer(id) {
     Get("Offer/OfferById/" + id, (data) => {
-        var mod = `
-        <div class="modal fade" id="showOfferModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Offers Details</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Offer Name</th>
-                                    <th>Offer Description</th>
-                                    <th>Offer Price</th>
-                                    <th>Offer Status</th>
-                                    <th>Edit</th>
-                                    <!-- Add more columns as needed -->
-                                </tr>
-                            </thead>
-                            <tbody id="offerTableBody">
-                                <!-- Offer details will be appended here dynamically -->
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        `;
-
-        $("#divMod").html(mod);
-
         var offerTableBody = $("#offerTableBody");
         offerTableBody.empty();
 
@@ -109,9 +74,7 @@ function AcceptOffer(offerId, requestId, userName, price, description,offerdate)
         OfferDate: offerdate
     };
     Post("Offer/Save", den, (data) => {
-        alert("Offer Approved Successfully");
-        $("#showOfferModal").modal("hide");
-
+        ShowOffer(requestId);
     });
 
 }
@@ -126,9 +89,7 @@ function RefuseOffer(offerId, requestId, userName, price, description, offerdate
         OfferDate: offerdate
     };
     Post("Offer/Save", den, (data) => {
-        alert("Offer Successfully Refused");
-        $("#showOfferModal").modal("hide");
-
+        ShowOffer(requestId);
     });
 
 }
