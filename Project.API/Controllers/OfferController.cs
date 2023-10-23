@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using Project.Model;
@@ -7,8 +8,10 @@ using Project.Repository;
 
 namespace Project.API.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
+    
     public class OfferController : BaseController
     {
         public OfferController(RepositoryWrapper repo) : base(repo)

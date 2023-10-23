@@ -4,6 +4,7 @@ using Microsoft.Extensions.Caching.Memory;
 using Project.Model;
 using Project.Repository;
 using Newtonsoft.Json.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Project.API.Controllers
 {
@@ -14,6 +15,7 @@ namespace Project.API.Controllers
         public RolController(RepositoryWrapper repo) : base(repo)
         {
         }
+        [Authorize(Roles = "Personel")]
         [HttpGet("AllRol")]
         public dynamic AllRol()
         {
@@ -24,6 +26,7 @@ namespace Project.API.Controllers
                 data = items,
             };
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost("Save")]
 
         public dynamic Save([FromBody] dynamic model)

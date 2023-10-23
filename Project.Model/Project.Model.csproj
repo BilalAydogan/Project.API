@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="DBFIRST MODEL AKTARMA.txt" />
+  </ItemGroup>
+
 </Project>

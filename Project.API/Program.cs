@@ -1,21 +1,32 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using NLog;
+using NLog.Extensions.Logging;
 using Project.Repository;
 using System.Text;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
+var config = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: true, reloadOnChange: true).Build();
+LogManager.Configuration = new NLogLoggingConfiguration(config.GetSection("NLog"));
+
+builder.Services.AddLogging(loggingBuilder => {
+    loggingBuilder.ClearProviders();
+    loggingBuilder.AddNLog();
+});
 
 // Add services to the container.
 builder.Services.AddDbContext<RepositoryContext>(opts => opts.UseSqlServer("Data Source=.\\BILAL;Initial Catalog=ProjectDB;Integrated Security=True; TrustServerCertificate=True"));
 //builder.Services.AddDbContext<RepositoryContext>(opts => opts.UseSqlServer("Data Source=.\\SQLSERVER;Initial Catalog=ProjectDB;Integrated Security=True; TrustServerCertificate=True"));
-
 builder.Services.AddScoped<RepositoryWrapper, RepositoryWrapper>();
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddMemoryCache();
+
 builder.Services.AddAuthentication(x => {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
