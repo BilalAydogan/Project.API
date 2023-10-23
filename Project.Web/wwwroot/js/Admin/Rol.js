@@ -1,5 +1,6 @@
-﻿function GetRol() {
-    Get("Rol/AllRol", (data) => {
+﻿var limit = 10;
+function GetRol(limit) {
+    Get("Rol/AllRol/"+limit, (data) => {
         var html = `<table class="table table-hover">` +
             `<tr><th style="width:50px">Id</th><th>Role Name</th><th>Edit</th></tr>`;
 
@@ -12,10 +13,23 @@
             html += `</tr>`
         }
         html += `</table>`;
-
         $("#divRoller").html(html);
+        if (arr.length == limit) {
+            var a = `<button class="btn btn-info" onclick='LimitArtir(${limit})'>Limit Artır</button>`;
+        } else {
+            a = `<div style="color:black;
+                            position:absolute;
+                            width:200px;
+                            bottom:0px;
+                            right:25%;
+                            left:50%;
+                            margin-left:-150px;">No More Result...</div>`;
+            
+        }
+        $("#demo").html(a);
     });
 }
+
 
 let selectedRolId = 0;
 
@@ -49,7 +63,10 @@ function RolModify(id, name) {
     $("#inputRolAd").val(name);
     $("#rolModal").modal("show");
 }
-
+function LimitArtir(limit) {
+    limit += 10;
+    GetRol(limit);
+}
 $(document).ready(function () {
-    GetRol();
+    GetRol(limit);
 });

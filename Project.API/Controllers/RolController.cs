@@ -15,18 +15,17 @@ namespace Project.API.Controllers
         public RolController(RepositoryWrapper repo) : base(repo)
         {
         }
-        [Authorize(Roles = "Personel")]
-        [HttpGet("AllRol")]
-        public dynamic AllRol()
+        
+        [HttpGet("AllRol/{limit}")]
+        public dynamic AllRol(int limit)
         {
-            List<Rol> items = repo.RolRepository.FindAll().ToList<Rol>();
+            List<Rol> items = repo.RolRepository.FindAll().Take(limit).ToList<Rol>();
             return new
             {
                 success = true,
                 data = items,
             };
         }
-        [Authorize(Roles = "Admin")]
         [HttpPost("Save")]
 
         public dynamic Save([FromBody] dynamic model)
