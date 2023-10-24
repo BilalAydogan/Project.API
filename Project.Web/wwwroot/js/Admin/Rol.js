@@ -1,4 +1,5 @@
-﻿var limit = 10;
+﻿var limit = 20;
+var isFetchingData = false;
 function GetRol(limit) {
     Get("Rol/AllRol/"+limit, (data) => {
         var html = `<table class="table table-hover">` +
@@ -15,10 +16,10 @@ function GetRol(limit) {
         html += `</table>`;
         $("#divRoller").html(html);
         if (arr.length == limit) {
-            var a = `<button class="btn btn-info" onclick='LimitArtir(${limit})'>Limit Artır</button>`;
+            var a = `<button class="btn btn-info" onclick='LimitArtir(${limit})'></button>`;
         } else {
             a = `<div style="color:black;
-                            position:absolute;
+                            position:relative;
                             width:200px;
                             bottom:0px;
                             right:25%;
@@ -27,6 +28,7 @@ function GetRol(limit) {
             
         }
         $("#demo").html(a);
+        isFetchingData = false;
     });
 }
 
@@ -63,10 +65,30 @@ function RolModify(id, name) {
     $("#inputRolAd").val(name);
     $("#rolModal").modal("show");
 }
-function LimitArtir(limit) {
-    limit += 10;
-    GetRol(limit);
-}
+
+$(window).on("scroll", function () {
+    if (!isFetchingData && $(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+        // Kullanıcı sayfanın en altına geldiğinde ve veri çekme işlemi yapılmıyorsa
+        isFetchingData = true;
+
+        // Yükleme mesajını göster
+        $("#loading1").show();
+
+        // Veri çekme işlemi için beklemek için setTimeout kullanılıyor
+        setTimeout(function () {
+            limit += 10;
+            GetRol(limit);
+
+            // Veri çekme işlemi tamamlandığında yükleme mesajını gizle
+            $("#loading1").hide();
+
+            // Veri çekme işlemi tamamlandığında isFetchingData flag'ini false yap
+            isFetchingData = false;
+        }, 1000); // 1000 milisaniye (1 saniye) beklet
+    }
+});
 $(document).ready(function () {
-    GetRol(limit);
+    
+        GetRol(limit);
+    
 });

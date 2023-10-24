@@ -1,16 +1,15 @@
 ﻿
-<script src="https://pagination.js.org/dist/2.6.0/pagination.min.js"
-        referrerpolicy="no-referrer">
-</script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
+<div style="" class="loading1" id="loading1">
+</div>
 <h2>Roller</h2>
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#rolModal">
     Add New Role
 </button>
+
 <div id="divRoller">
 </div>
-
-
-
 
 <div class="modal fade" id="rolModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -31,5 +30,19 @@
         </div>
     </div>
 </div>
-<div id="demo"></div>
 <script src="~/js/admin/rol.js" asp-append-version="true"></script>
+<style>
+    #loading1 {
+        display: none;
+        position: fixed;
+        z-index: 100;
+        width: 20%;
+        height: 20%;
+        bottom:40%;
+        left:40%;
+        background-color: transparent;
+        background-image: url("https://i.stack.imgur.com/MnyxU.gif");
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+</style>
